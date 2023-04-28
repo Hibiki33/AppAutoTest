@@ -81,8 +81,8 @@ class RunAppium():
         time.sleep(15)
     
     def run_appium(self):
-        os.system('adb kill-server 1> adb_log.txt 2> adb_log_err.txt')
-        os.system('appium -a localhost -p 4723')
+        os.system('adb kill-server')
+        os.system('appium -a localhost -p 4723 > appium.log')
 
 if __name__ == '__main__':
     ra = RunAppium()
