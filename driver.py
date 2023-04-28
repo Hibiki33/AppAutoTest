@@ -65,7 +65,7 @@ class BiliOperator():
             time.sleep(1)
             self.driver.find_element(By.ID, ('arrow')).click()
             time.sleep(1)
-            desctext = self.driver.find_element(By.ID, ('desc')).text
+            desctext = self.driver.find_elements(By.ID('resourceId'), ('desc')).text
             titles.append(desctext)
             descs.append(desctext)
             time.sleep(3)
