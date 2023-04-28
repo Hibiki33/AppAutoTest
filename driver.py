@@ -51,37 +51,43 @@ class BiliOperator():
             sbox = self.driver.find_element(By.ID, ('search_src_text'))
             sbox.send_keys(keyword)
             self.driver.press_keycode(AndroidKey.ENTER)
-            titles.append(self.driver.find_elements(By.ID, 'title'))
-            time.sleep(15)
+            titles.append(self.driver.find_elements(By.ID, 'title').text)
+            time.sleep(8)
+            self.driver.find_element(By.ID, ('title')).click()
+            self.driver.find_element(By.ID, ('frame_recommend')).click()
+            titles.append(self.driver.find_elements(By.ID, 'recommend_num').text)
+            time.sleep(3)
+            self.driver.press_keycode(AndroidKey.BACK)
+            time.sleep(1)
             self.driver.press_keycode(AndroidKey.BACK)
         self.quit_search()
         return titles
     
-    def access_buy(self):
-        print("Accessing buy page...")
-        self.driver.find_element(By.XPATH, ('4,')).click()
-        time.sleep(2)
+    # def access_buy(self):
+    #     print("Accessing buy page...")
+    #     self.driver.find_element(By.XPATH, ('4,')).click()
+    #     time.sleep(2)
 
-    def quit_buy(self):
-        print("Quitting buy page...")
-        self.driver.press_keycode(AndroidKey.BACK)
-        time.sleep(1)
+    # def quit_buy(self):
+    #     print("Quitting buy page...")
+    #     self.driver.press_keycode(AndroidKey.BACK)
+    #     time.sleep(1)
 
-    def search_buy(self, keywords):
-        self.access_buy()
-        self.access_search('mall_home_search_v2')
-        titles = []
-        for keyword in keywords:
-            print("Searching for " + keyword + "...")
-            sbox = self.driver.find_element(By.ID, ('search_edit'))
-            sbox.send_keys(keyword)
-            self.driver.press_keycode(AndroidKey.ENTER)
-            titles.append(self.driver.find_elements(By.ID, 'title'))
-            time.sleep(15)
-            self.driver.press_keycode(AndroidKey.BACK)
-        self.quit_search()
-        self.quit_buy()
-        return titles
+    # def search_buy(self, keywords):
+    #     self.access_buy()
+    #     self.access_search('mall_home_search_v2')
+    #     titles = []
+    #     for keyword in keywords:
+    #         print("Searching for " + keyword + "...")
+    #         sbox = self.driver.find_element(By.ID, ('search_edit'))
+    #         sbox.send_keys(keyword)
+    #         self.driver.press_keycode(AndroidKey.ENTER)
+    #         titles.append(self.driver.find_elements(By.ID, 'title'))
+    #         time.sleep(8)
+    #         self.driver.press_keycode(AndroidKey.BACK)
+    #     self.quit_search()
+    #     self.quit_buy()
+    #     return titles
 
 
 class RunAppium():
@@ -99,7 +105,7 @@ if __name__ == '__main__':
     bili = BiliOperator()
     results = str(bili.search_video(["china", "USA", "Russia"]))
     f.writelines(results)
-    bili.access_buy()
-    results = str(bili.search_buy(["bakuen", "konosuba"]))
-    f.writelines(results)
+    # bili.access_buy()
+    # results = str(bili.search_buy(["bakuen", "konosuba"]))
+    # f.writelines(results)
     
