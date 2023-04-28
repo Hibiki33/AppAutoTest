@@ -49,13 +49,13 @@ class BiliOperator():
         sbox.send_keys(keyword)
         self.driver.press_keycode(AndroidKey.ENTER)
         titles = self.driver.find_elements(By.ID, 'title')
-        self.driver.implicitly_wait(40)
+        time.sleep(50)
         self.quit_search()
         return titles
     
     def access_buy(self):
         print("Accessing buy page...")
-        self.driver.find_element(By.XPATH, ('会员购')).click()
+        self.driver.find_element(By.XPATH, ('4,')).click()
 
     def quit_buy(self):
         print("Quitting buy page...")
@@ -69,7 +69,7 @@ class BiliOperator():
         sbox.send_keys(keyword)
         self.driver.press_keycode(AndroidKey.ENTER)
         titles = self.driver.find_elements(By.ID, 'title')
-        self.driver.implicitly_wait(40)
+        time.sleep(50)
         self.quit_search()
         self.quit_buy()
         return titles
@@ -82,7 +82,7 @@ class RunAppium():
     
     def run_appium(self):
         os.system('adb kill-server')
-        os.system('appium -a localhost -p 4723 > appium.log')
+        os.system('appium -a localhost -p 4723 1> appium_log.txt 2> appium_err.txt')
 
 if __name__ == '__main__':
     ra = RunAppium()
