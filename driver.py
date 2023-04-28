@@ -58,7 +58,7 @@ class BiliOperator():
             time.sleep(8)
             self.driver.find_element(By.ID, ('title')).click()
             self.driver.find_element(By.ID, ('frame_recommend')).click()
-            titles.append(self.driver.find_elements(By.ID, 'recommend_num').text)
+            titles.append(self.driver.find_element(By.ID, 'recommend_num').text)
             time.sleep(3)
             self.driver.press_keycode(AndroidKey.BACK)
             time.sleep(1)
