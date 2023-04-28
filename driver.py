@@ -22,6 +22,7 @@ class BiliOperator():
         self.port = 4723
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', self.desired_caps)
         self.driver.implicitly_wait(20) # wait for app to start
+        self.pass_adolescent_protection()
 
     def pass_adolescent_protection(self):
         try:
@@ -58,6 +59,7 @@ class RunAppium():
         time.sleep(15)
     
     def run_appium(self):
+        os.system('adb kill-server')
         os.system('appium -a localhost -p 4723')
 
 if __name__ == '__main__':
