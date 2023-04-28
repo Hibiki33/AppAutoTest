@@ -43,12 +43,13 @@ class BiliOperator():
     
     def search_video(self, keywords):
         self.access_search('expand_search')
+        titles = []
         for keyword in keywords:
             print("Searching for " + keyword + "...")
             sbox = self.driver.find_element(By.ID, ('search_src_text'))
             sbox.send_keys(keyword)
             self.driver.press_keycode(AndroidKey.ENTER)
-            titles = self.driver.find_elements(By.ID, 'title')
+            titles.append(self.driver.find_elements(By.ID, 'title'))
             time.sleep(15)
             self.driver.press_keycode(AndroidKey.BACK)
         self.quit_search()
@@ -65,12 +66,13 @@ class BiliOperator():
     def search_buy(self, keywords):
         self.access_buy()
         self.access_search('mall_home_search_v2')
+        titles = []
         for keyword in keywords:
             print("Searching for " + keyword + "...")
             sbox = self.driver.find_element(By.ID, ('search_edit'))
             sbox.send_keys(keyword)
             self.driver.press_keycode(AndroidKey.ENTER)
-            titles = self.driver.find_elements(By.ID, 'title')
+            titles.append(self.driver.find_elements(By.ID, 'title'))
             time.sleep(15)
             self.driver.press_keycode(AndroidKey.BACK)
         self.quit_search()
@@ -88,11 +90,12 @@ class RunAppium():
         os.system('appium -a localhost -p 4723')
 
 if __name__ == '__main__':
+    f = open('log.txt', 'w')
     ra = RunAppium()
     bili = BiliOperator()
     results = str(bili.search_video(["china", "USA", "Russia"]))
-    print(results)
+    f.writelines(results)
     bili.access_buy()
     results = str(bili.search_buy(["bakuen", "konosuba"]))
-    print(results)
+    f.writelines(results)
     
