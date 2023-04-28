@@ -55,7 +55,7 @@ class BiliOperator():
             eles = self.driver.find_elements(By.ID, 'title')
             for ele in eles:
                 titles.append(ele.text)
-            time.sleep(8)
+            time.sleep(30)
             self.driver.find_element(By.ID, ('title')).click()
             self.driver.find_element(By.ID, ('frame_recommend')).click()
             titles.append(self.driver.find_element(By.ID, 'recommend_num').text)
