@@ -40,16 +40,17 @@ class BiliOperator():
     def quit_search(self):
         print("Quitting search page...")
         self.driver.press_keycode(AndroidKey.BACK)
-        self.driver.press_keycode(AndroidKey.BACK)
     
-    def search_video(self, keyword):
+    def search_video(self, keywords):
         self.access_search('expand_search')
-        print("Searching for " + keyword + "...")
-        sbox = self.driver.find_element(By.ID, ('search_src_text'))
-        sbox.send_keys(keyword)
-        self.driver.press_keycode(AndroidKey.ENTER)
-        titles = self.driver.find_elements(By.ID, 'title')
-        time.sleep(50)
+        for keyword in keywords:
+            print("Searching for " + keyword + "...")
+            sbox = self.driver.find_element(By.ID, ('search_src_text'))
+            sbox.send_keys(keyword)
+            self.driver.press_keycode(AndroidKey.ENTER)
+            titles = self.driver.find_elements(By.ID, 'title')
+            time.sleep(15)
+            self.driver.press_keycode(AndroidKey.BACK)
         self.quit_search()
         return titles
     
@@ -61,15 +62,17 @@ class BiliOperator():
         print("Quitting buy page...")
         self.driver.press_keycode(AndroidKey.BACK)
 
-    def search_buy(self, keyword):
+    def search_buy(self, keywords):
         self.access_buy()
         self.access_search('mall_home_search_v2')
-        print("Searching for " + keyword + "...")
-        sbox = self.driver.find_element(By.ID, ('search_edit'))
-        sbox.send_keys(keyword)
-        self.driver.press_keycode(AndroidKey.ENTER)
-        titles = self.driver.find_elements(By.ID, 'title')
-        time.sleep(50)
+        for keyword in keywords:
+            print("Searching for " + keyword + "...")
+            sbox = self.driver.find_element(By.ID, ('search_edit'))
+            sbox.send_keys(keyword)
+            self.driver.press_keycode(AndroidKey.ENTER)
+            titles = self.driver.find_elements(By.ID, 'title')
+            time.sleep(15)
+            self.driver.press_keycode(AndroidKey.BACK)
         self.quit_search()
         self.quit_buy()
         return titles
@@ -82,14 +85,14 @@ class RunAppium():
     
     def run_appium(self):
         os.system('adb kill-server')
-        os.system('appium -a localhost -p 4723 1> appium_log.txt 2> appium_err.txt')
+        os.system('appium -a localhost -p 4723')
 
 if __name__ == '__main__':
     ra = RunAppium()
     bili = BiliOperator()
-    results = str(bili.search_video("idol")) + str(bili.search_video("yoasobi"))
+    results = str(bili.search_video(["china", "USA", "Russia"]))
     print(results)
     bili.access_buy()
-    results = str(bili.search_buy("会员")) + str(bili.search_buy("年度"))
+    results = str(bili.search_buy(["bakuen", "konosuba"]))
     print(results)
     
