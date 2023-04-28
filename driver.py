@@ -53,7 +53,7 @@ class BiliOperator():
             self.driver.press_keycode(AndroidKey.ENTER)
             titles.append(self.driver.find_elements(By.ID, 'title'))
             time.sleep(15)
-            self.driver.press_keycode(AndroidKey.BACK)
+            # self.driver.press_keycode(AndroidKey.BACK)
         self.quit_search()
         return titles
     
@@ -78,7 +78,7 @@ class BiliOperator():
             self.driver.press_keycode(AndroidKey.ENTER)
             titles.append(self.driver.find_elements(By.ID, 'title'))
             time.sleep(15)
-            self.driver.press_keycode(AndroidKey.BACK)
+            # self.driver.press_keycode(AndroidKey.BACK)
         self.quit_search()
         self.quit_buy()
         return titles
@@ -97,7 +97,7 @@ if __name__ == '__main__':
     f = open('log.txt', 'w')
     ra = RunAppium()
     bili = BiliOperator()
-    results = str(bili.search_video(["china", "USA", "Russia"]))
+    results = str(bili.search_video(["china", "yyy", "Russia"]))
     f.writelines(results)
     bili.access_buy()
     results = str(bili.search_buy(["bakuen", "konosuba"]))
