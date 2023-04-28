@@ -21,7 +21,7 @@ class BiliOperator():
         self.host = '127.0.0.1'
         self.port = 4723
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', self.desired_caps)
-        time.sleep(1) # wait for app to start
+        time.sleep(5) # wait for app to start
         self.pass_adolescent_protection()
 
     def pass_adolescent_protection(self):
@@ -52,7 +52,9 @@ class BiliOperator():
             sbox = self.driver.find_element(By.ID, ('search_src_text'))
             sbox.send_keys(keyword)
             self.driver.press_keycode(AndroidKey.ENTER)
-            titles.append(self.driver.find_elements(By.ID, 'title').text)
+            eles = self.driver.find_elements(By.ID, 'title')
+            for ele in eles:
+                titles.append(ele.text)
             time.sleep(8)
             self.driver.find_element(By.ID, ('title')).click()
             self.driver.find_element(By.ID, ('frame_recommend')).click()
