@@ -49,6 +49,7 @@ class BiliOperator():
         sbox.send_keys(keyword)
         self.driver.press_keycode(AndroidKey.ENTER)
         titles = self.driver.find_elements(By.ID, 'title')
+        self.driver.implicitly_wait(20)
         self.quit_search()
         return titles
     
@@ -68,6 +69,7 @@ class BiliOperator():
         sbox.send_keys(keyword)
         self.driver.press_keycode(AndroidKey.ENTER)
         titles = self.driver.find_elements(By.ID, 'title')
+        self.driver.implicitly_wait(20)
         self.quit_search()
         self.quit_buy()
         return titles
@@ -79,7 +81,7 @@ class RunAppium():
         time.sleep(15)
     
     def run_appium(self):
-        os.system('adb kill-server > adb_log.txt')
+        os.system('adb kill-server 1> adb_log.txt 2> adb_log_err.txt')
         os.system('appium -a localhost -p 4723')
 
 if __name__ == '__main__':
