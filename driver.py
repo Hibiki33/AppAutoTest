@@ -64,7 +64,7 @@ class BiliOperator():
             time.sleep(1)
             self.driver.find_element(By.ID, ('arrow')).click()
             time.sleep(1)
-            titles.append(self.driver.find_element(By.ID, 'desc').text)
+            titles.append(self.driver.find_element(By.id("resourceId"), 'desc').text)
             time.sleep(3)
             self.driver.press_keycode(AndroidKey.BACK)
             time.sleep(1)
