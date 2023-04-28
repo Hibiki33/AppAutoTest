@@ -40,7 +40,7 @@ class BiliOperator():
         sbox.send_keys(keyword)
         self.driver.press_keycode(AndroidKey.ENTER)
         titles = self.driver.find_elements(By.ID, 'title')
-        self.driver.implicitly_wait(5) # wait for app to start
+        self.driver.implicitly_wait(20) # wait for app to start
         return titles
     
     def access_buy(self):
@@ -53,7 +53,7 @@ class BiliOperator():
         sbox.send_keys(keyword)
         self.driver.press_keycode(AndroidKey.ENTER)
         titles = self.driver.find_elements(By.ID, 'title')
-        self.driver.implicitly_wait(5) # wait for app to start
+        self.driver.implicitly_wait(20) # wait for app to start
         return titles
 
 
