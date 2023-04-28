@@ -110,6 +110,7 @@ if __name__ == '__main__':
     ra = RunAppium()
     bili = BiliOperator()
     results = str(bili.search_video(["china daily", "spaceX"]))
+    print(results)
     f.writelines(results)
     # bili.access_buy()
     # results = str(bili.search_buy(["bakuen", "konosuba"]))
