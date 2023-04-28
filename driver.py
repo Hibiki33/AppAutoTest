@@ -36,10 +36,12 @@ class BiliOperator():
     def access_search(self, search_frame_id):
         print("Accessing search page...")
         self.driver.find_element(By.ID, (search_frame_id)).click()
+        time.sleep(2)
     
     def quit_search(self):
         print("Quitting search page...")
         self.driver.press_keycode(AndroidKey.BACK)
+        time.sleep(1)
     
     def search_video(self, keywords):
         self.access_search('expand_search')
@@ -58,10 +60,12 @@ class BiliOperator():
     def access_buy(self):
         print("Accessing buy page...")
         self.driver.find_element(By.XPATH, ('4,')).click()
+        time.sleep(2)
 
     def quit_buy(self):
         print("Quitting buy page...")
         self.driver.press_keycode(AndroidKey.BACK)
+        time.sleep(1)
 
     def search_buy(self, keywords):
         self.access_buy()
