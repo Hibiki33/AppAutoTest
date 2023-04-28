@@ -33,8 +33,10 @@ class BiliOperator():
         except:
             print('Adolescent protect not found!')
     
-    def search_video(self, keyword):
-        self.driver.press_keycode(AndroidKey.BACK)
+    def search_video(self, keyword, isfirst=False):
+        if not isfirst:
+            self.driver.press_keycode(AndroidKey.BACK)
+            self.driver.press_keycode(AndroidKey.BACK)
         self.driver.find_element(By.ID, ('expand_search')).click()
         sbox = self.driver.find_element(By.ID, ('search_src_text'))
         sbox.send_keys(keyword)
@@ -46,8 +48,10 @@ class BiliOperator():
     def access_buy(self):
         self.driver.find_element(By.XPATH, ('会员购')).click()
 
-    def search_buy(self, keyword):
-        self.driver.press_keycode(AndroidKey.BACK)
+    def search_buy(self, keyword, isfirst=False):
+        if not isfirst:
+            self.driver.press_keycode(AndroidKey.BACK)
+            self.driver.press_keycode(AndroidKey.BACK)
         self.driver.find_element(By.ID, ('mall_home_search_v2')).click()
         sbox = self.driver.find_element(By.ID, ('search_edit'))
         sbox.send_keys(keyword)
@@ -64,12 +68,13 @@ class RunAppium():
     
     def run_appium(self):
         os.system('adb kill-server')
+        time.sleep(5)
         os.system('appium -a localhost -p 4723')
 
 if __name__ == '__main__':
     ra = RunAppium()
     bili = BiliOperator()
-    results = str(bili.search_video("idol")) + str(bili.search_video("yoasobi"))
+    results = str(bili.search_video("idol", isfirst=True)) + str(bili.search_video("yoasobi"))
     print(results)
     bili.access_buy()
     results = str(bili.search_buy("会员")) + str(bili.search_buy("年度"))
