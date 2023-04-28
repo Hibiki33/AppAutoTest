@@ -32,32 +32,44 @@ class BiliOperator():
                 iknow.click()
         except:
             print('Adolescent protect not found!')
+
+    def access_search(self, search_frame_id):
+        print("Accessing search page...")
+        self.driver.find_element(By.ID, (search_frame_id)).click()
     
-    def search_video(self, keyword, isfirst=False):
-        if not isfirst:
-            self.driver.press_keycode(AndroidKey.BACK)
-            self.driver.press_keycode(AndroidKey.BACK)
-        self.driver.find_element(By.ID, ('expand_search')).click()
+    def quit_search(self):
+        print("Quitting search page...")
+        self.driver.press_keycode(AndroidKey.BACK)
+        self.driver.press_keycode(AndroidKey.BACK)
+    
+    def search_video(self, keyword):
+        self.access_search('expand_search')
+        print("Searching for " + keyword + "...")
         sbox = self.driver.find_element(By.ID, ('search_src_text'))
         sbox.send_keys(keyword)
         self.driver.press_keycode(AndroidKey.ENTER)
         titles = self.driver.find_elements(By.ID, 'title')
-        self.driver.implicitly_wait(20) # wait for app to start
+        self.quit_search()
         return titles
     
     def access_buy(self):
+        print("Accessing buy page...")
         self.driver.find_element(By.XPATH, ('会员购')).click()
 
-    def search_buy(self, keyword, isfirst=False):
-        if not isfirst:
-            self.driver.press_keycode(AndroidKey.BACK)
-            self.driver.press_keycode(AndroidKey.BACK)
-        self.driver.find_element(By.ID, ('mall_home_search_v2')).click()
+    def quit_buy(self):
+        print("Quitting buy page...")
+        self.driver.press_keycode(AndroidKey.BACK)
+
+    def search_buy(self, keyword):
+        self.access_buy()
+        self.access_search('mall_home_search_v2')
+        print("Searching for " + keyword + "...")
         sbox = self.driver.find_element(By.ID, ('search_edit'))
         sbox.send_keys(keyword)
         self.driver.press_keycode(AndroidKey.ENTER)
         titles = self.driver.find_elements(By.ID, 'title')
-        self.driver.implicitly_wait(20) # wait for app to start
+        self.quit_search()
+        self.quit_buy()
         return titles
 
 
@@ -67,14 +79,13 @@ class RunAppium():
         time.sleep(15)
     
     def run_appium(self):
-        os.system('adb kill-server')
-        time.sleep(5)
+        os.system('adb kill-server > adb_log.txt')
         os.system('appium -a localhost -p 4723')
 
 if __name__ == '__main__':
     ra = RunAppium()
     bili = BiliOperator()
-    results = str(bili.search_video("idol", isfirst=True)) + str(bili.search_video("yoasobi"))
+    results = str(bili.search_video("idol")) + str(bili.search_video("yoasobi"))
     print(results)
     bili.access_buy()
     results = str(bili.search_buy("会员")) + str(bili.search_buy("年度"))
