@@ -34,6 +34,7 @@ class BiliOperator():
             print('Adolescent protect not found!')
     
     def search_video(self, keyword):
+        self.driver.press_keycode(AndroidKey.BACK)
         self.driver.find_element(By.ID, ('expand_search')).click()
         sbox = self.driver.find_element(By.ID, ('search_src_text'))
         sbox.send_keys(keyword)
@@ -45,6 +46,7 @@ class BiliOperator():
         self.driver.find_element(By.XPATH, ('会员购')).click()
 
     def search_buy(self, keyword):
+        self.driver.press_keycode(AndroidKey.BACK)
         self.driver.find_element(By.ID, ('mall_home_search_v2')).click()
         sbox = self.driver.find_element(By.ID, ('search_edit'))
         sbox.send_keys(keyword)
