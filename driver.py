@@ -35,10 +35,10 @@ class BiliOperator():
     
     def search_video(self, keyword):
         self.driver.find_element(By.ID, ('expand_search')).click()
-        sbox = driver.find_element(By.ID, ('search_src_text'))
+        sbox = self.driver.find_element(By.ID, ('search_src_text'))
         sbox.send_keys(keyword)
-        driver.press_keycode(AndroidKey.ENTER)
-        titles = driver.find_elements(By.ID, 'title')
+        self.driver.press_keycode(AndroidKey.ENTER)
+        titles = self.driver.find_elements(By.ID, 'title')
         return titles
     
     def access_buy(self):
