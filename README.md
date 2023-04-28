@@ -82,6 +82,27 @@ An unknown server-side error occurred while processing the command. Original err
 
 
 
+### APPID
+
+会员购按钮
+
+```
+xpath:	//android.widget.FrameLayout[@content-desc="会员购,5之4,标签"]
+```
+
+会员购搜索栏
+
+```
+id:		tv.danmaku.bili:id/mall_home_search_v2_layout
+xpath: 	
+```
+
+会员购输入框
+
+```
+id:		search_edit
+```
+
 
 
 
