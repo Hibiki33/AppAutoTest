@@ -55,14 +55,16 @@ class BiliOperator():
             eles = self.driver.find_elements(By.ID, 'title')
             for ele in eles:
                 titles.append(ele.text)
-            time.sleep(30)
+            time.sleep(20)
             self.driver.find_element(By.ID, ('title')).click()
+            time.sleep(3)
             self.driver.find_element(By.ID, ('frame_recommend')).click()
             titles.append(self.driver.find_element(By.ID, 'recommend_num').text)
             time.sleep(3)
             self.driver.press_keycode(AndroidKey.BACK)
             time.sleep(1)
             self.driver.press_keycode(AndroidKey.BACK)
+            time.sleep(1)
         self.quit_search()
         return titles
     
