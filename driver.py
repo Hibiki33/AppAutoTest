@@ -26,8 +26,9 @@ class BiliOperator():
 
     def pass_adolescent_protection(self):
         try:
-            iknow = self.driver.find_element_by_id('text3')
+            iknow = self.driver.find_element_by_id('text2')
             if iknow:
+                iknow = self.driver.find_element_by_id('button')
                 print('Adolescent protect found!')
                 iknow.click()
         except:
