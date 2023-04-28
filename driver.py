@@ -51,6 +51,7 @@ class BiliOperator():
             print("Searching for " + keyword + "...")
             sbox = self.driver.find_element(By.ID, ('search_src_text'))
             sbox.send_keys(keyword)
+            time.sleep(1)
             self.driver.press_keycode(AndroidKey.ENTER)
             eles = self.driver.find_elements(By.ID, 'title')
             for ele in eles:
