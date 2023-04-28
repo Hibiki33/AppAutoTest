@@ -56,7 +56,7 @@ class BiliOperator():
             eles = self.driver.find_elements(By.ID, 'title')
             for ele in eles:
                 titles.append(ele.text)
-            time.sleep(20)
+            time.sleep(15)
             self.driver.find_element(By.ID, ('title')).click()
             time.sleep(3)
             self.driver.find_element(By.ID, ('frame_recommend')).click()
@@ -106,10 +106,10 @@ class RunAppium():
         os.system('appium -a localhost -p 4723')
 
 if __name__ == '__main__':
-    f = open('log.txt', 'w')
+    f = open('log.txt', 'w', encoding='utf-8')
     ra = RunAppium()
     bili = BiliOperator()
-    results = str(bili.search_video(["china", "USA", "Russia"]))
+    results = str(bili.search_video(["china daily", "spaceX"]))
     f.writelines(results)
     # bili.access_buy()
     # results = str(bili.search_buy(["bakuen", "konosuba"]))
