@@ -49,7 +49,7 @@ class BiliOperator():
         sbox.send_keys(keyword)
         self.driver.press_keycode(AndroidKey.ENTER)
         titles = self.driver.find_elements(By.ID, 'title')
-        self.driver.implicitly_wait(20)
+        self.driver.implicitly_wait(40)
         self.quit_search()
         return titles
     
@@ -69,7 +69,7 @@ class BiliOperator():
         sbox.send_keys(keyword)
         self.driver.press_keycode(AndroidKey.ENTER)
         titles = self.driver.find_elements(By.ID, 'title')
-        self.driver.implicitly_wait(20)
+        self.driver.implicitly_wait(40)
         self.quit_search()
         self.quit_buy()
         return titles
