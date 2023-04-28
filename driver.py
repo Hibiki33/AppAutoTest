@@ -53,6 +53,7 @@ class BiliOperator():
             sbox.send_keys(keyword)
             time.sleep(1)
             self.driver.press_keycode(AndroidKey.ENTER)
+            time.sleep(3)
             eles = self.driver.find_elements(By.ID, 'title')
             for ele in eles:
                 titles.append(ele.text)
@@ -111,7 +112,7 @@ if __name__ == '__main__':
     bili = BiliOperator()
     results = str(bili.search_video(["china daily", "spaceX"]))
     print(results)
-    f.writelines(results)
+    f.write(results)
     # bili.access_buy()
     # results = str(bili.search_buy(["bakuen", "konosuba"]))
     # f.writelines(results)
