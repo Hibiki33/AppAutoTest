@@ -21,7 +21,7 @@ class BiliOperator():
         self.host = '127.0.0.1'
         self.port = 4723
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', self.desired_caps)
-        time.sleep(10) # wait for app to start
+        time.sleep(1) # wait for app to start
         self.pass_adolescent_protection()
 
     def pass_adolescent_protection(self):
