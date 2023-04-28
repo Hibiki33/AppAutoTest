@@ -63,9 +63,9 @@ class BiliOperator():
             time.sleep(3)
             self.driver.find_element(By.ID, ('frame_recommend')).click()
             time.sleep(1)
-            self.driver.find_element(By.ID, ('arrow')).click()
+            self.driver.find_element(By.ID, ('tab_sub_title')).click()
             time.sleep(1)
-            desctext = self.driver.find_elements_by_android_uiautomator('new UiSelector().resourceId(\"desc\")')
+            desctext = self.driver.find_elements(By.CLASS_NAME ,'TextView')
             for desc in desctext:
                 descs.append(desc.text)
             time.sleep(3)
