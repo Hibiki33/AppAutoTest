@@ -47,6 +47,7 @@ class BiliOperator():
     def search_video(self, keywords):
         self.access_search('expand_search')
         titles = []
+        descs = []
         for keyword in keywords:
             print("Searching for " + keyword + "...")
             sbox = self.driver.find_element(By.ID, ('search_src_text'))
@@ -64,14 +65,16 @@ class BiliOperator():
             time.sleep(1)
             self.driver.find_element(By.ID, ('arrow')).click()
             time.sleep(1)
-            titles.append(self.driver.find_element(By.id("resourceId"), 'desc').text)
+            desctext = self.driver.find_element(By.ID, ('desc')).text
+            titles.append(desctext)
+            descs.append(desctext)
             time.sleep(3)
             self.driver.press_keycode(AndroidKey.BACK)
             time.sleep(1)
             self.driver.press_keycode(AndroidKey.BACK)
             time.sleep(1)
         self.quit_search()
-        return titles
+        return titles, descs
     
     # def access_buy(self):
     #     print("Accessing buy page...")
@@ -113,8 +116,9 @@ if __name__ == '__main__':
     f = open('log.txt', 'w', encoding='utf-8')
     ra = RunAppium()
     bili = BiliOperator()
-    results = str(bili.search_video(["china daily", "spaceX"]))
-    print(results)
+    results = bili.search_video(["china daily", "spaceX"])
+    print(results[0])
+    print(results[1])
     f.write(results)
     # bili.access_buy()
     # results = str(bili.search_buy(["bakuen", "konosuba"]))
