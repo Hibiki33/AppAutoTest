@@ -12,8 +12,8 @@ class MeituanOperator():
         self.desired_caps["platformName"] = "Android"
         self.desired_caps["platformVersion"] = "9"
         self.desired_caps["deviceName"] = "emulator-5554 device"
-        self.desired_caps["appPackage"] = "tv.danmaku.bili"
-        self.desired_caps["appActivity"] = "tv.danmaku.bili.MainActivityV2"
+        self.desired_caps["appPackage"] = "com.meituan.retail.v.android"
+        self.desired_caps["appActivity"] = "com.meituan.retail.c.android.newhome.newmain.NewMainActivity"
         self.desired_caps["unicodeKeyboard"] = True
         self.desired_caps["resetKeyboard"] = True
         self.desired_caps["noReset"] = True
@@ -22,21 +22,10 @@ class MeituanOperator():
         self.port = 4723
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', self.desired_caps)
         time.sleep(5) # wait for app to start
-        self.pass_adolescent_protection()
-
-    def pass_adolescent_protection(self):
-        try:
-            iknow = self.driver.find_element_by_id('text2')
-            if iknow:
-                iknow = self.driver.find_element_by_id('button')
-                print('Adolescent protect found!')
-                iknow.click()
-        except:
-            print('Adolescent protect not found!')
 
     def access_search(self, search_frame_id):
         print("Accessing search page...")
-        self.driver.find_element(By.ID, (search_frame_id)).click()
+        self.driver.find_element(By.XPATH, (search_frame_id)).click()
         time.sleep(2)
     
     def quit_search(self):
@@ -45,12 +34,12 @@ class MeituanOperator():
         time.sleep(1)
     
     def search_video(self, keywords):
-        self.access_search('expand_search')
+        self.access_search('android.widget.FrameLayout[2]/android.support.v7.widget.RecyclerView/android.view.ViewGroup[1]')
         titles = []
         descs = []
         for keyword in keywords:
             print("Searching for " + keyword + "...")
-            sbox = self.driver.find_element(By.ID, ('search_src_text'))
+            sbox = self.driver.find_element(By.CLASS_NAME, ('android.widget.EditText'))
             sbox.send_keys(keyword)
             time.sleep(1)
             self.driver.press_keycode(AndroidKey.ENTER)
@@ -84,10 +73,10 @@ class MeituanOperator():
         self.quit_search()
         return titles, descs
     
-    # def access_buy(self):
-    #     print("Accessing buy page...")
-    #     self.driver.find_element(By.XPATH, ('4,')).click()
-    #     time.sleep(2)
+    def access_buy(self):
+        print("Accessing buy page...")
+        self.driver.find_element(By.XPATH, ('会员购,5之4,标签"]/android.view.ViewGroup')).click()
+        time.sleep(2)
 
     # def quit_buy(self):
     #     print("Quitting buy page...")
@@ -124,11 +113,11 @@ if __name__ == '__main__':
     f = open('log.txt', 'w', encoding='utf-8')
     ra = RunAppium()
     bili = BiliOperator()
-    results = bili.search_video(["china daily", "spaceX"])
-    print(str(results[0]))
-    print(str(results[1]))
-    f.write(results)
-    # bili.access_buy()
+    # results = bili.search_video(["china daily", "spaceX"])
+    # print(str(results[0]))
+    # print(str(results[1]))
+    # f.write(results)
+    bili.access_buy()
     # results = str(bili.search_buy(["bakuen", "konosuba"]))
     # f.writelines(results)
     
