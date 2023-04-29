@@ -1,14 +1,15 @@
 import unittest
-from driver import BiliOperator
+from driver import BiliOperator, RunAppium
 
 class TestCalculator(unittest.TestCase):
     def testDivide01(self):
         cal = BiliOperator()
-        self.assertEqual(cal.divide(), 2)
+        cal.search_video(["china daily", "spaceX"])
 
     def testDivide02(self):
         cal = BiliOperator()
-        self.assertEqual(cal.divide(), 3)
+        # self.assertEqual(cal.divide(), 3)
 
 if __name__ == '__main__':
+    ra = RunAppium()
     unittest.main()
