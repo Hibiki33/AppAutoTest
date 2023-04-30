@@ -6,7 +6,7 @@ import os
 import _thread
 import time
     
-class BiliOperator():
+class BiliOperator(object):
     def __init__(self):
         self.desired_caps = {}
         self.desired_caps["platformName"] = "Android"

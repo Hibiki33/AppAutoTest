@@ -13,7 +13,17 @@ class TestCalculator(unittest.TestCase):
     
     def testALL(self):
         cal = BiliOperator()
-        cal.search_video(['china daily', 'spaceX'])
+
+        # search test
+        titles, descs = cal.search_video(['china daily', 'spaceX'])
+        with open('search_results.txt', 'w', encoding = 'utf-8') as fp:
+            for title in titles:
+                fp.write(title + '\n')
+        with open('comments.txt', 'w', encoding = 'utf-8') as fp:
+            for desc in descs:
+                fp.write(desc + '\n')
+
+        # buy test
         cal.search_buy([u'尼禄'])
         cal.driver.close_app()
 
