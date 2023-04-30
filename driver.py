@@ -21,7 +21,7 @@ class BiliOperator():
         self.host = '127.0.0.1'
         self.port = 4723
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', self.desired_caps)
-        time.sleep(5) # wait for app to start
+        time.sleep(10) # wait for app to start
         self.pass_adolescent_protection()
 
     def pass_adolescent_protection(self):
@@ -88,7 +88,7 @@ class BiliOperator():
         print("Accessing buy page...")
         eles = self.driver.find_elements(By.CLASS_NAME, ('android.widget.TextView'))
         eles[-2].click()
-        time.sleep(2)
+        time.sleep(10)
         print(eles[-2].text)
 
     def quit_buy(self):
@@ -98,16 +98,48 @@ class BiliOperator():
 
     def search_buy(self, keywords):
         self.access_buy()
-        self.access_search('mall_home_search_v2')
+        self.access_search('mall_home_search_v2_layout')
         titles = []
         for keyword in keywords:
             print("Searching for " + keyword + "...")
             sbox = self.driver.find_element(By.ID, ('search_edit'))
             sbox.send_keys(keyword)
-            self.driver.press_keycode(AndroidKey.ENTER)
-            titles.append(self.driver.find_elements(By.ID, 'title'))
+            time.sleep(6)
+            # self.driver.press_keycode(AndroidKey.ENTER)
+            self.driver.find_element(By.ID, ('mall_id_search_page_actionbar_commit')).click()
+            time.sleep(60)
+            # self.driver.press_keycode(AndroidKey.BACK)
+            # time.sleep(1)
+            # sbox = self.driver.find_element(By.ID, ('search_edit'))
+            # sbox.send_keys(keyword)
+            # time.sleep(6)
+            # self.driver.find_element(By.ID, ('mall_id_search_page_actionbar_commit')).click()
+            # time.sleep(6)
+            eles = self.driver.find_elements(By.CLASS_NAME, ('android.widget.Image'))
+            passing = True
+            # for ele in eles:
+            #     if keyword in ele.text:
+            #         if passing:
+            #             passing = False
+            #             continue
+            #         ele.click()
+            #         break
+            #     else:
+            #         assert(0)
+            eles[-1].click()
             time.sleep(8)
+            eles = self.driver.find_elements(By.CLASS_NAME, ('android.view.View'))
+            for ele in eles:
+                if u"购物车" in ele.text:
+                    ele.click()
+                    break
+                else:
+                    assert(0)
+            time.sleep(5)
             self.driver.press_keycode(AndroidKey.BACK)
+            time.sleep(1)
+            self.driver.press_keycode(AndroidKey.BACK)
+            time.sleep(1)
         self.quit_search()
         self.quit_buy()
         return titles
