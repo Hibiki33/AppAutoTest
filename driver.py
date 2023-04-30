@@ -107,7 +107,7 @@ class BiliOperator():
             time.sleep(6)
             # self.driver.press_keycode(AndroidKey.ENTER)
             self.driver.find_element(By.ID, ('mall_id_search_page_actionbar_commit')).click()
-            time.sleep(60)
+            time.sleep(10)
             # self.driver.press_keycode(AndroidKey.BACK)
             # time.sleep(1)
             # sbox = self.driver.find_element(By.ID, ('search_edit'))
@@ -115,8 +115,14 @@ class BiliOperator():
             # time.sleep(6)
             # self.driver.find_element(By.ID, ('mall_id_search_page_actionbar_commit')).click()
             # time.sleep(6)
+            # text_contains = 'new UiSelector().textContains("png")'
+            # self.driver.find_elements(By.android_uiautomator(text_contains)).click()
+            self.driver.find_elements(By.CLASS_NAME, ('android.webkit.WebView'))
+            time.sleep(10)
             eles = self.driver.find_elements(By.CLASS_NAME, ('android.widget.Image'))
-            passing = True
+            eles[4].click()
+            # eles = self.driver.find_elements(By.CLASS_NAME, ('android.widget.TextView'))
+            # passing = True
             # for ele in eles:
             #     if keyword in ele.text:
             #         if passing:
@@ -124,17 +130,13 @@ class BiliOperator():
             #             continue
             #         ele.click()
             #         break
-            #     else:
-            #         assert(0)
-            eles[-1].click()
+            # eles[-1].click()
             time.sleep(8)
             eles = self.driver.find_elements(By.CLASS_NAME, ('android.view.View'))
             for ele in eles:
                 if u"购物车" in ele.text:
                     ele.click()
                     break
-                else:
-                    assert(0)
             time.sleep(5)
             self.driver.press_keycode(AndroidKey.BACK)
             time.sleep(1)
