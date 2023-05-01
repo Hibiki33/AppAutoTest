@@ -52,7 +52,7 @@ class AppOp :
         return 0
 
     def click(self, driver):
-        self.get_element(driver).click()
+        self.get_element(driver)
         time.sleep(2)
         return 0
     
@@ -77,7 +77,14 @@ class AppOp :
                 return 0
         raise Exception('AppOp find_cart_and_click failed')
 
-    def get_element(self, driver):
+    def get_element(self, driver, click=False):
+        if click:
+            if 'index' in self.op_dict:
+                self.wait(driver, lambda d: d.find_elements(self.by, (self.val)), 1)[self.index].click()
+            else:
+                self.wait(driver, lambda d: d.find_element(self.by, (self.val)), 1).click()
+            time.sleep(self.wait_time)
+            return 0
         if 'index' in self.op_dict:
             return self.wait(driver, lambda d: d.find_elements(self.by, (self.val)), self.wait_time)[self.index]
         return self.wait(driver, lambda d: d.find_element(self.by, (self.val)), self.wait_time)
