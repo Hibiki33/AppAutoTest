@@ -17,12 +17,14 @@ class AppOp :
             raise Exception('AppOp init failed type not in id, xpath, class_name')
         self.by = by_dict[self.type]
 
-    def run(self, driver):
+    def __call__(self, driver, keyword=None):
         func_dict = {'skip': self.skip, 'back': self.back, 'enter': self.enter, 'click': self.click, 'send_keys': self.send_keys, 'find': self.find, 'find_cart_and_click': self.find_cart_and_click}
         if self.op not in func_dict:
             raise Exception('AppOp run failed op not in skip, back, enter, click, send_keys, find, find_cart_and_click')
         if self.op == 'send_keys':
-            func_dict[self.op](driver, self.keyword)
+            if keyword is None:
+                raise Exception('AppOp run failed op is send_keys but keyword is None')
+            func_dict[self.op](driver, keyword)
         else:
             func_dict[self.op](driver)
 
