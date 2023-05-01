@@ -5,7 +5,7 @@ from common.app_func import AppFunc
 
 class App(object):
 
-    def __init__(self, app_json_file, app_func_json_file):
+    def __init__(self, app_json_file, app_func_json_file=None):
         # device_name='emulator-5554 device', 
         # app_name='tv.danmaku.bili', 
         # apk_path='./App/iBiliPlayer-bili.apk'):
@@ -14,8 +14,9 @@ class App(object):
         self.app_name = get_json_value(app_file_json_data, 'appPackage')
         self.apk_path = get_json_value(app_file_json_data, 'installApkPath')
         self.adb_connect()
-        self.driver = Driver(app_json_file).driver
-        self.app_func = AppFunc(self.driver, app_func_json_file)
+        if not app_func_json_file:
+            self.driver = Driver(app_json_file).driver
+            self.app_func = AppFunc(self.driver, app_func_json_file)
 
     def adb_connect(self): 
         devices = os.popen("adb devices")
