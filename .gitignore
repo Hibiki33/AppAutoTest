@@ -1,2 +1,5 @@
 # .gitignore
 *.txt
+*.doc
+*.docx
+*.pdf
