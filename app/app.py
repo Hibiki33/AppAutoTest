@@ -1,4 +1,5 @@
 import os
+import time
 from common.read_json import get_json_value, get_desired_caps
 from common.driver import Driver
 from common.app_func import AppFunc
