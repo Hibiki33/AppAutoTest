@@ -29,15 +29,13 @@
         "wait_time": 10
     },
     "tasks": {
-        "first_access" : [
+        "add_cart": [
             {
                 "val": "android.webkit.WebView",
                 "type": "class_name",
                 "op": "find",
                 "wait_time": 10
-            }
-        ],
-        "add_cart": [
+            },
             {
                 "val": "android.widget.Image",
                 "type": "class_name",
