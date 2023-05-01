@@ -52,7 +52,7 @@ class AppOp :
         return 0
 
     def click(self, driver):
-        self.get_element(driver)
+        self.get_element(driver, click=True)
         time.sleep(2)
         return 0
     
