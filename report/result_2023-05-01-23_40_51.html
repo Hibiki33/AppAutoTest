@@ -189,9 +189,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>App Auto Test</h1>
-<p class='attribute'><strong>Start Time:</strong> 2023-05-01 23:27:40</p>
-<p class='attribute'><strong>Duration:</strong> 0:02:30.619087</p>
-<p class='attribute'><strong>Status:</strong> Pass 2 Error 1</p>
+<p class='attribute'><strong>Start Time:</strong> 2023-05-01 23:40:51</p>
+<p class='attribute'><strong>Duration:</strong> 0:02:03.342009</p>
+<p class='attribute'><strong>Status:</strong> Pass 2 Error 2</p>
 
 <p class='description'>Test Results:</p>
 </div>
@@ -222,12 +222,12 @@ function showOutput(id, name) {
 </tr>
 
 <tr class='errorClass'>
-    <td>test_buy.TestBuy</td>
-    <td>3</td>
+    <td>test_video.TestVideo</td>
+    <td>4</td>
     <td>2</td>
     <td>0</td>
-    <td>1</td>
-    <td><a href="javascript:showClassDetail('c1',3)">Detail</a></td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c1',4)">Detail</a></td>
 </tr>
 
 <tr id='ft1.1' class='none'>
@@ -246,19 +246,19 @@ function showOutput(id, name) {
         <pre>
         
 ft1.1: Traceback (most recent call last):
-  File "D:\Python\AppAutoTest\testcases\test_buy.py", line 15, in test_all
-    log(self.app.app_func('miku', task))
+  File "D:\Python\AppAutoTest\testcases\test_video.py", line 15, in test_all
+    log(self.app.app_func('china', task))
   File "D:\Python\AppAutoTest\common\app_func.py", line 22, in __call__
     self.search(search_keyword)
-  File "D:\Python\AppAutoTest\common\app_func.py", line 33, in search
-    self.search_edit_bar(self.driver, keyword)
-  File "D:\Python\AppAutoTest\common\app_op.py", line 29, in __call__
-    return func_dict[self.op](driver, keyword)
-  File "D:\Python\AppAutoTest\common\app_op.py", line 60, in send_keys
-    self.get_element(driver).send_keys(keyword)
-  File "D:\Python\AppAutoTest\common\app_op.py", line 90, in get_element
-    return self.wait(driver, lambda d: d.find_element(self.by, (self.val)), self.wait_time)
-  File "D:\Python\AppAutoTest\common\app_op.py", line 96, in wait
+  File "D:\Python\AppAutoTest\common\app_func.py", line 32, in search
+    self.search_frame_id(self.driver)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 31, in __call__
+    return func_dict[self.op](driver)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 55, in click
+    self.get_element(driver, click=True)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 84, in get_element
+    self.wait(driver, lambda d: d.find_element(self.by, (self.val)), 3).click()
+  File "D:\Python\AppAutoTest\common\app_op.py", line 95, in wait
     res = WebDriverWait(driver, timeout=time).until(func)
   File "D:\Anaconda\envs\app_test\lib\site-packages\selenium\webdriver\support\wait.py", line 95, in until
     raise TimeoutException(message, screen, stacktrace)
@@ -270,19 +270,19 @@ NoSuchElementError: An element could not be located on the page using the given 
     at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\11678\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\basedriver\commands\find.js:33:12)
     at AndroidUiautomator2Driver.findElement (C:\Users\11678\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\basedriver\commands\find.js:53:10)
 Traceback (most recent call last):
-  File "D:\Python\AppAutoTest\testcases\test_buy.py", line 15, in test_all
-    log(self.app.app_func('miku', task))
+  File "D:\Python\AppAutoTest\testcases\test_video.py", line 15, in test_all
+    log(self.app.app_func('china', task))
   File "D:\Python\AppAutoTest\common\app_func.py", line 22, in __call__
     self.search(search_keyword)
-  File "D:\Python\AppAutoTest\common\app_func.py", line 33, in search
-    self.search_edit_bar(self.driver, keyword)
-  File "D:\Python\AppAutoTest\common\app_op.py", line 29, in __call__
-    return func_dict[self.op](driver, keyword)
-  File "D:\Python\AppAutoTest\common\app_op.py", line 60, in send_keys
-    self.get_element(driver).send_keys(keyword)
-  File "D:\Python\AppAutoTest\common\app_op.py", line 90, in get_element
-    return self.wait(driver, lambda d: d.find_element(self.by, (self.val)), self.wait_time)
-  File "D:\Python\AppAutoTest\common\app_op.py", line 96, in wait
+  File "D:\Python\AppAutoTest\common\app_func.py", line 32, in search
+    self.search_frame_id(self.driver)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 31, in __call__
+    return func_dict[self.op](driver)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 55, in click
+    self.get_element(driver, click=True)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 84, in get_element
+    self.wait(driver, lambda d: d.find_element(self.by, (self.val)), 3).click()
+  File "D:\Python\AppAutoTest\common\app_op.py", line 95, in wait
     res = WebDriverWait(driver, timeout=time).until(func)
   File "D:\Anaconda\envs\app_test\lib\site-packages\selenium\webdriver\support\wait.py", line 95, in until
     raise TimeoutException(message, screen, stacktrace)
@@ -302,22 +302,70 @@ NoSuchElementError: An element could not be located on the page using the given 
     </td>
 </tr>
 
-<tr id='pt1.2' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_bad</div></td>
+<tr id='ft1.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_get_desc</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" οnfοcus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
-        pass</a>
+    <a class="popup_link" οnfοcus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        error</a>
 
-    <div id='div_pt1.2' class="popup_window">
+    <div id='div_ft1.2' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a οnfοcus='this.blur();' οnclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+        <a οnfοcus='this.blur();' οnclick="document.getElementById('div_ft1.2').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-pt1.2: 
+ft1.2: Traceback (most recent call last):
+  File "D:\Python\AppAutoTest\testcases\test_video.py", line 24, in test_get_desc
+    log(self.app.app_func('russia', 'get_desc'))
+  File "D:\Python\AppAutoTest\common\app_func.py", line 22, in __call__
+    self.search(search_keyword)
+  File "D:\Python\AppAutoTest\common\app_func.py", line 32, in search
+    self.search_frame_id(self.driver)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 31, in __call__
+    return func_dict[self.op](driver)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 55, in click
+    self.get_element(driver, click=True)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 84, in get_element
+    self.wait(driver, lambda d: d.find_element(self.by, (self.val)), 3).click()
+  File "D:\Python\AppAutoTest\common\app_op.py", line 95, in wait
+    res = WebDriverWait(driver, timeout=time).until(func)
+  File "D:\Anaconda\envs\app_test\lib\site-packages\selenium\webdriver\support\wait.py", line 95, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\11678\AppData\Roaming\npm\node_modules\appium\node_modules\appium-android-driver\lib\commands\find.js:75:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\11678\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\basedriver\commands\find.js:33:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\11678\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\basedriver\commands\find.js:53:10)
+Traceback (most recent call last):
+  File "D:\Python\AppAutoTest\testcases\test_video.py", line 24, in test_get_desc
+    log(self.app.app_func('russia', 'get_desc'))
+  File "D:\Python\AppAutoTest\common\app_func.py", line 22, in __call__
+    self.search(search_keyword)
+  File "D:\Python\AppAutoTest\common\app_func.py", line 32, in search
+    self.search_frame_id(self.driver)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 31, in __call__
+    return func_dict[self.op](driver)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 55, in click
+    self.get_element(driver, click=True)
+  File "D:\Python\AppAutoTest\common\app_op.py", line 84, in get_element
+    self.wait(driver, lambda d: d.find_element(self.by, (self.val)), 3).click()
+  File "D:\Python\AppAutoTest\common\app_op.py", line 95, in wait
+    res = WebDriverWait(driver, timeout=time).until(func)
+  File "D:\Anaconda\envs\app_test\lib\site-packages\selenium\webdriver\support\wait.py", line 95, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\11678\AppData\Roaming\npm\node_modules\appium\node_modules\appium-android-driver\lib\commands\find.js:75:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\11678\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\basedriver\commands\find.js:33:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\11678\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\basedriver\commands\find.js:53:10)
+
 
         </pre>
     </div>
@@ -327,7 +375,7 @@ pt1.2:
 </tr>
 
 <tr id='pt1.3' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_good</div></td>
+    <td class='none'><div class='testcase'>test_search</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
@@ -350,12 +398,36 @@ pt1.3:
     </td>
 </tr>
 
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_thumb_up</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" οnfοcus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        pass</a>
+
+    <div id='div_pt1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a οnfοcus='this.blur();' οnclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
 <tr id='total_row'>
     <td>Total</td>
-    <td>3</td>
+    <td>4</td>
     <td>2</td>
     <td>0</td>
-    <td>1</td>
+    <td>2</td>
     <td>&nbsp;</td>
 </tr>
 </table>
