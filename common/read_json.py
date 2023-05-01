@@ -1,8 +1,7 @@
 import json
 import os
 
-from app_op import AppOp
-from app_func import AppFunc
+from common.app_func import AppFunc
 
 def get_desired_caps(caps_file_name):
     with open(os.path.join("..", "conf", caps_file_name), 'r') as f:

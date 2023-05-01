@@ -1,5 +1,5 @@
-from app_op import AppOp
-from read_json import get_json_value
+from common.app_op import AppOp
+from common.read_json import get_json_value
 
 class AppFunc:
     
