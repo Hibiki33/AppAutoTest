@@ -1,6 +1,7 @@
 from appium.webdriver.extensions.android.nativekey import AndroidKey
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+import time
 
 class AppOp :
 
@@ -29,22 +30,29 @@ class AppOp :
             func_dict[self.op](driver)
 
     def skip(self, driver):
+        time.sleep(1)
         pass
     
     def back(self, driver):
         driver.press_keycode(AndroidKey.BACK)
+        time.sleep(2)
     
     def enter(self, driver):
         driver.press_keycode(AndroidKey.ENTER)
+        time.sleep(2)
 
     def click(self, driver):
         self.get_element(driver).click()
+        time.sleep(2)
     
     def send_keys(self, driver, keyword):
         self.get_element(driver).send_keys(keyword)
+        time.sleep(2)
     
     def find(self, driver):
-        self.get_element(driver)
+        res = self.get_element(driver)
+        time.sleep(2)
+        return res
 
     def get_texts(self, driver):
         return [ele.text for ele in self.get_elements(driver)]

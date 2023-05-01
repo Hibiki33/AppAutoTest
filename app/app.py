@@ -38,8 +38,3 @@ class App(object):
         if uninstall.read():
             print('Uninstall', self.app_name)
 
-
-if __name__ == '__main__':
-    bilibili = App()
-    bilibili.app_direct_install()
-    bilibili.app_uninstall()
