@@ -1,5 +1,8 @@
 # .gitignore
-*.txt
-*.doc
-*.docx
-*.pdf
+# *.txt
+# *.doc
+# *.docx
+# *.pdf
+/.vs
+/.vscode
+/.idea
