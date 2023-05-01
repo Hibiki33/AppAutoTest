@@ -17,7 +17,7 @@ if __name__ == '__main__':
     bilibili.app_replace_install()
     ra = RunAppium()
     time.sleep(10)
-    load_case = unittest.defaultTestLoader.discover(case_path, "test_video.py")
+    load_case = unittest.defaultTestLoader.discover(case_path, "test_*.py")
     now = time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime(time.time()))
     report_abspath = os.path.join(report_path, "result_" + now + ".html")
     with open(report_abspath, "wb") as fp:
