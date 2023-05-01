@@ -1,6 +1,5 @@
 import os
-from common.get_json_value import get_json_value
-from common.read_json import get_desired_caps
+from common.read_json import get_json_value, get_desired_caps
 
 class App(object):
 
