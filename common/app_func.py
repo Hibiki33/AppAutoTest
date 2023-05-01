@@ -23,20 +23,17 @@ class AppFunc:
         self.search(search_keyword)
         res = self.do_task(task_name)
         self.exit(self.driver)
-        self.exit(self.driver)
-        self.in_search_panel = False
         return res
 
     def search(self, keyword):
-        if self.in_search_panel:
-            raise Exception("Already in search panel but calling search()")
         if not self.accessed:
             self.access_button(self.driver)
             self.accessed = True
-        self.search_frame_id(self.driver)
+        if not self.in_search_panel:
+            self.search_frame_id(self.driver)
+            self.in_search_panel = True
         self.search_edit_bar(self.driver, keyword)
         self.search_button(self.driver)
-        self.in_search_panel = True
     
     def get_task_list(self):
         return list(self.tasks.keys())
