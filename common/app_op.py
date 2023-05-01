@@ -20,41 +20,46 @@ class AppOp :
             self.by = by_dict[self.type]
 
     def __call__(self, driver, keyword=None):
-        func_dict = {'try_click': self.try_click, 'skip': self.skip, 'back': self.back, 'enter': self.enter, 'click': self.click, 'send_keys': self.send_keys, 'find': self.find, 'find_cart_and_click': self.find_cart_and_click}
+        func_dict = {'get_texts': self.get_texts, 'try_click': self.try_click, 'skip': self.skip, 'back': self.back, 'enter': self.enter, 'click': self.click, 'send_keys': self.send_keys, 'find': self.find, 'find_cart_and_click': self.find_cart_and_click}
         if self.op not in func_dict:
             raise Exception('AppOp run failed op not in skip, back, enter, click, send_keys, find, find_cart_and_click')
         if self.op == 'send_keys':
             if keyword is None:
                 raise Exception('AppOp run failed op is send_keys but keyword is None')
-            func_dict[self.op](driver, keyword)
+            return func_dict[self.op](driver, keyword)
         else:
-            func_dict[self.op](driver)
+            return func_dict[self.op](driver)
     
     def try_click(self, driver):
         try:
             self.click(driver)
         except:
             pass
+        return 0
 
     def skip(self, driver):
         time.sleep(1)
-        pass
+        return 0
     
     def back(self, driver):
         driver.press_keycode(AndroidKey.BACK)
         time.sleep(2)
+        return 0
     
     def enter(self, driver):
         driver.press_keycode(AndroidKey.ENTER)
         time.sleep(2)
+        return 0
 
     def click(self, driver):
         self.get_element(driver).click()
         time.sleep(2)
+        return 0
     
     def send_keys(self, driver, keyword):
         self.get_element(driver).send_keys(keyword)
         time.sleep(2)
+        return 0
     
     def find(self, driver):
         res = self.get_element(driver)
@@ -69,7 +74,7 @@ class AppOp :
         for ele in eles:
             if u'购物车' in ele.text:
                 ele.click()
-                return
+                return 0
         raise Exception('AppOp find_cart_and_click failed')
 
     def get_element(self, driver):
