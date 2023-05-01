@@ -16,6 +16,8 @@ class TestCalculator(unittest.TestCase):
 
         # search test
         titles, descs = cal.search_video(['china daily', 'spaceX'])
+        self.assertNotEqual(len(titles), 0)
+        self.assertNotEqual(len(descs), 0)
         with open('search_results.txt', 'w', encoding = 'utf-8') as fp:
             for title in titles:
                 fp.write(title + '\n')

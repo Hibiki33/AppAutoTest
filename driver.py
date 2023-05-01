@@ -1,6 +1,7 @@
 from appium import webdriver
 from appium.webdriver.extensions.android.nativekey import AndroidKey
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
 
 import os
 import _thread
@@ -55,15 +56,21 @@ class BiliOperator(object):
             time.sleep(1)
             self.driver.press_keycode(AndroidKey.ENTER)
             time.sleep(3)
-            eles = self.driver.find_elements(By.ID, 'title')
+            eles = self.wait(lambda d: d.find_elements(By.ID, 'title'), 10)
             for ele in eles:
                 titles.append(ele.text)
-            time.sleep(15)
-            self.driver.find_element(By.ID, ('title')).click()
-            time.sleep(3)
-            self.driver.find_element(By.ID, ('frame_recommend')).click()
+            # time.sleep(15)
+            # self.driver.find_element(By.ID, ('title')).click()
+            ele = self.wait(lambda d: d.find_element(By.ID, 'title'), 3)
+            ele.click()
+            # time.sleep(3)
+            # self.driver.find_element(By.ID, ('frame_recommend')).click()
+            ele = self.wait(lambda d: d.find_element(By.ID, ('frame_recommend')), 1)
+            ele.click()
             time.sleep(1)
-            self.driver.find_element(By.ID, ('tab_sub_title')).click()
+            # self.driver.find_element(By.ID, ('tab_sub_title')).click()
+            ele = self.wait(lambda d: d.find_element(By.ID, ('tab_sub_title')), 1)
+            ele.click()
             time.sleep(1)
             desctext = self.driver.find_elements(By.CLASS_NAME, ('android.widget.TextView'))
             foundcmt = False
@@ -132,7 +139,8 @@ class BiliOperator(object):
             #         break
             # eles[-1].click()
             time.sleep(8)
-            eles = self.driver.find_elements(By.CLASS_NAME, ('android.view.View'))
+            # eles = self.driver.find_elements(By.CLASS_NAME, ('android.view.View'))
+            eles = self.wait(lambda d: d.find_elements(By.CLASS_NAME, ('android.view.View')), 10)
             for ele in eles:
                 if u"购物车" in ele.text:
                     ele.click()
@@ -145,7 +153,10 @@ class BiliOperator(object):
         self.quit_search()
         self.quit_buy()
         return titles
-
+    
+    def wait(self, func, time=10):
+        res = WebDriverWait(self.driver, timeout=time).until(func)
+        return res
 
 class RunAppium():
     def __init__(self):
@@ -155,6 +166,7 @@ class RunAppium():
     def run_appium(self):
         os.system('adb kill-server')
         os.system('appium -a localhost -p 4723')
+
 
 if __name__ == '__main__':
     f = open('log.txt', 'w', encoding='utf-8')
