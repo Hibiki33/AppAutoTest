@@ -4,7 +4,7 @@
         "type": "class_name",
         "index": -2,
         "op": "click",
-        "wait_time": 12
+        "wait_time": 16
     },
     "search_frame_id": {
         "val": "mall_home_search_v2_layout",
