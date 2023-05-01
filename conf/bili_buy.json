@@ -59,7 +59,7 @@
                 "val": "android.widget.Image",
                 "type": "class_name",
                 "op": "click",
-                "index" : 4,
+                "index" : 6,
                 "wait_time": 8
             },
             {
