@@ -14,19 +14,19 @@ def get_json_value(json_data, key):
     else:
         raise Exception(f'get_json_value failed, \"{key}\" not in json_data')
 
-def get_app_ops(app_file_name):
+def get_app_task_ops(app_file_name):
     with open(os.path.join("..", "conf", app_file_name), 'r') as f:
         json_data = json.loads(f.read())
-    app_ops = {}
-    app_ops["access_button"] = AppOp(get_json_value(json_data, "access_button"))
-    app_ops["search_frame_id"] = AppOp(get_json_value(json_data, "search_frame_id"))
-    app_ops["search_edit_bar"] = AppOp(get_json_value(json_data, "search_input_id"))
-    app_ops["search_button"] = AppOp(get_json_value(json_data, "search_button_id"))
+    app_task_ops = {}
+    app_task_ops["access_button"] = AppOp(get_json_value(json_data, "access_button"))
+    app_task_ops["search_frame_id"] = AppOp(get_json_value(json_data, "search_frame_id"))
+    app_task_ops["search_edit_bar"] = AppOp(get_json_value(json_data, "search_input_id"))
+    app_task_ops["search_button"] = AppOp(get_json_value(json_data, "search_button_id"))
     tasks = get_json_value(json_data, "tasks")
-    app_ops["tasks"] = {}
+    app_task_ops["tasks"] = {}
     for task_key in tasks:
-        app_ops["tasks"][task_key] = AppOp(get_json_value(tasks, task_key))
-    return app_ops
+        app_task_ops["tasks"][task_key] = AppOp(get_json_value(tasks, task_key))
+    return app_task_ops
 
 if __name__ == '__main__':
     x = get_desired_caps('caps_bili.json')
