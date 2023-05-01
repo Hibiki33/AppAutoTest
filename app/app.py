@@ -1,7 +1,6 @@
 import os
-import sys
-sys.path.append("..")
-from common.read_json import get_json_value
+
+from common.get_json_value import get_json_value
 
 class App(object):
 

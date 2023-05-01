@@ -8,12 +8,6 @@ def get_desired_caps(caps_file_name):
         desired_caps = json.loads(f.read())
     return desired_caps
 
-def get_json_value(json_data, key):
-    if key in json_data:
-        return json_data[key]
-    else:
-        raise Exception(f'get_json_value failed, \"{key}\" not in json_data')
-
 def get_app_func(app_func_file_name, driver):
     with open(os.path.join("..", "conf", app_func_file_name), 'r') as f:
         app_file_json_data = json.loads(f.read())
