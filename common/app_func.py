@@ -13,6 +13,7 @@ class AppFunc:
         tasks = get_json_value(app_file_func_json_data, "tasks")
         self.tasks = {}
         self.in_search_panel = False
+        self.accessed = False
         for task_name in tasks:
             self.tasks[task_name] = []
             for cur_op_dict in tasks[task_name]:
@@ -29,7 +30,9 @@ class AppFunc:
     def search(self, keyword):
         if self.in_search_panel:
             raise Exception("Already in search panel but calling search()")
-        self.access_button(self.driver)
+        if not self.accessed:
+            self.access_button(self.driver)
+            self.accessed = True
         self.search_frame_id(self.driver)
         self.search_edit_bar(self.driver, keyword)
         self.search_button(self.driver)
