@@ -1,0 +1,74 @@
+{
+    "access_button" : {
+        "op" : "none"
+    },
+    "search_frame_id" : {
+        "val" : "expand_search",
+        "type" : "id",
+        "op" : "click",
+        "wait_time" : 2
+    },
+    "search_edit_bar" : {
+        "val" : "search_src_text",
+        "type" : "id",
+        "op" : "send_keys",
+        "wait_time" : 2
+    },
+    "search_button" : {
+        "op" : "enter",
+        "wait_time" : 3
+    },
+    "tasks" : {
+        "get_title" : [
+            {
+                "val" : "title",
+                "type" : "id",
+                "op" : "get_texts",
+                "wait_time" : 10
+            }
+        ],
+        "thumb_up" : [
+            {
+                "val" : "title",
+                "type" : "id",
+                "op" : "click",
+                "wait_time" : 1
+            },
+            {
+                "val" : "frame_recommend",
+                "type" : "id",
+                "op" : "click",
+                "wait_time" : 2
+            },
+            {
+                "op" : "back",
+                "wait_time" : 1
+            }
+        ],
+        "get_desc" : [
+            {
+                "val" : "title",
+                "type" : "id",
+                "op" : "click",
+                "wait_time" : 1
+            },
+            {
+                "val" : "tab_sub_title",
+                "type" : "id",
+                "op" : "click",
+                "wait_time" : 1
+            },
+            {
+                "val" : "android.widget.TextView",
+                "type" : "class_name",
+                "op" : "get_texts",
+                "wait_time" : 3
+            },
+            {
+                "op" : "back",
+                "wait_time" : 1
+            }
+        ]
+        
+    }
+}

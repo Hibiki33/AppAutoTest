@@ -1,0 +1,56 @@
+{
+    "access_button": {
+        "val": "android.widget.TextView",
+        "type": "class_name",
+        "index": -2,
+        "op": "click",
+        "wait_time": 2
+    },
+    "search_frame_id": {
+        "val": "mall_home_search_v2_layout",
+        "type": "id",
+        "op": "click",
+        "wait_time": 2
+    },
+    "search_edit_bar": {
+        "val": "search_edit",
+        "type": "id",
+        "op": "send_keys",
+        "wait_time": 5
+    },
+    "search_button": {
+        "val": "mall_id_search_page_actionbar_commit",
+        "type": "id",
+        "op": "click",
+        "wait_time": 10
+    },
+    "tasks": {
+        "first_access" : [
+            {
+                "val": "android.webkit.WebView",
+                "type": "class_name",
+                "op": "find",
+                "wait_time": 10
+            }
+        ],
+        "add_cart": [
+            {
+                "val": "android.widget.Image",
+                "type": "class_name",
+                "op": "click",
+                "index" : 4,
+                "wait_time": 8
+            },
+            {
+                "val": "android.view.View",
+                "type": "class_name",
+                "op": "find_cart_and_click",
+                "wait_time": 5
+            },
+            {
+                "op": "back",
+                "wait_time": 1
+            }
+        ]
+    }
+}
