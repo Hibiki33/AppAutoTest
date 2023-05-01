@@ -14,8 +14,9 @@ class AppOp :
         for key in op_dict:
             setattr(self, key, op_dict[key])
         by_dict = {'id': By.ID, 'xpath': By.XPATH, 'class_name': By.CLASS_NAME}
-        if self.type not in by_dict:
-            raise Exception('AppOp init failed type not in id, xpath, class_name')
+        if 'type' in op_dict:
+            if self.type not in by_dict:
+                raise Exception('AppOp init failed type not in id, xpath, class_name')
         self.by = by_dict[self.type]
 
     def __call__(self, driver, keyword=None):
