@@ -8,4 +8,4 @@ if __name__ == '__init__':
 
 
 
-    bilibili.app_replace_install()
+    bilibili.app_uninstall()
