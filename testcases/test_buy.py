@@ -12,9 +12,3 @@ class TestBuy(unittest.TestCase):
         all_tasks = self.app.app_func.get_task_list()
         for task in all_tasks:
             self.app.app_func('miku', task)
-
-    def test_buy2(self):
-        print("buy2")
-
-    def test_buy3(self):
-        print("buy3")
