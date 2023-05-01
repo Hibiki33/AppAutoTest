@@ -56,7 +56,13 @@
         ],
         "add_cart_bad": [
             {
-                "val": "android.widget.Image",
+                "val": "android.webkit.WebView",
+                "type": "class_name",
+                "op": "find",
+                "wait_time": 10
+            },
+            {
+                "val": "android.view.Image",
                 "type": "class_name",
                 "op": "click",
                 "index" : 6,
