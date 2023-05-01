@@ -22,6 +22,7 @@ class AppFunc:
         self.search(search_keyword)
         res = self.do_task(task_name)
         self.exit(self.driver)
+        self.exit(self.driver)
         self.in_search_panel = False
         return res
 
