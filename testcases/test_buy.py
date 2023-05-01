@@ -12,3 +12,9 @@ class TestBuy(unittest.TestCase):
         all_tasks = self.app.app_func.get_task_list()
         for task in all_tasks:
             self.app.app_func('miku', task)
+    
+    def test_bad(self):
+        self.app.app_func('miku', 'add_cart_bad')
+    
+    def test_good(self):
+        self.app.app_func('miku', 'add_cart')
