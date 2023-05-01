@@ -80,9 +80,9 @@ class AppOp :
     def get_element(self, driver, click=False):
         if click:
             if 'index' in self.op_dict:
-                self.wait(driver, lambda d: d.find_elements(self.by, (self.val)), 1)[self.index].click()
+                self.wait(driver, lambda d: d.find_elements(self.by, (self.val)), 3)[self.index].click()
             else:
-                self.wait(driver, lambda d: d.find_element(self.by, (self.val)), 1).click()
+                self.wait(driver, lambda d: d.find_element(self.by, (self.val)), 3).click()
             time.sleep(self.wait_time)
             return 0
         if 'index' in self.op_dict:
