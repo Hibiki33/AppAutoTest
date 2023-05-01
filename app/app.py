@@ -15,7 +15,7 @@ class App(object):
         self.app_name = get_json_value(app_file_json_data, 'appPackage')
         self.apk_path = get_json_value(app_file_json_data, 'installApkPath')
         self.adb_connect()
-        if not app_func_json_file:
+        if app_func_json_file:
             self.driver = Driver(app_file_json_data).driver
             self.app_func = AppFunc(self.driver, app_file_func_json_data)
 
