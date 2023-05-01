@@ -1,13 +1,14 @@
 import os
-
 from common.get_json_value import get_json_value
+from common.read_json import get_desired_caps
 
 class App(object):
 
-    def __init__(self, app_file_json_data):
+    def __init__(self, app_file_json):
         # device_name='emulator-5554 device', 
         # app_name='tv.danmaku.bili', 
         # apk_path='./App/iBiliPlayer-bili.apk'):
+        app_file_json_data = get_desired_caps(app_file_json)
         self.device_name = get_json_value(app_file_json_data, 'deviceName')
         self.app_name = get_json_value(app_file_json_data, 'appPackage')
         self.apk_path = get_json_value(app_file_json_data, 'installApkPath')
