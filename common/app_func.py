@@ -15,8 +15,8 @@ class AppFunc:
         self.in_search_panel = False
         for task_name in tasks:
             self.tasks[task_name] = []
-            for key in tasks[task_name]:
-                self.tasks[task_name].append(AppOp(tasks[task_name][key]))
+            for cur_op_dict in tasks[task_name]:
+                self.tasks[task_name].append(AppOp(cur_op_dict))
     
     def __call__(self, search_keyword, task_name):
         self.search(search_keyword)
