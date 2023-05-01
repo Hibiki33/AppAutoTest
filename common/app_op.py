@@ -62,10 +62,13 @@ class AppOp :
     
     def find(self, driver):
         res = self.get_element(driver)
+        time.sleep(self.wait_time)
         return res
 
     def get_texts(self, driver):
-        return [ele.text for ele in self.get_elements(driver)]
+        res = [ele.text for ele in self.get_elements(driver)]
+        time.sleep(self.wait_time)
+        return res
     
     def find_cart_and_click(self, driver):
         eles = self.get_elements(driver)
