@@ -1,6 +1,6 @@
 {
     "access_button" : {
-        "op" : "none",
+        "op" : "skip",
         "wait_time" : 1
     },
     "search_frame_id" : {
