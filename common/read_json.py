@@ -28,6 +28,7 @@ def get_app_task_ops(app_file_name):
         app_task_ops["tasks"][task_key] = AppOp(get_json_value(tasks, task_key))
     return app_task_ops
 
+
 if __name__ == '__main__':
     x = get_desired_caps('caps_bili.json')
     print(x["appActivity"])
