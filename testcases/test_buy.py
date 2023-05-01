@@ -1,5 +1,6 @@
 import unittest
 from app.app import App
+from common.log import log
 
 class TestBuy(unittest.TestCase):
     def setUp(self):
@@ -11,10 +12,10 @@ class TestBuy(unittest.TestCase):
     def test_all(self):
         all_tasks = self.app.app_func.get_task_list()
         for task in all_tasks:
-            self.app.app_func('miku', task)
+            log(self.app.app_func('miku', task))
     
     def test_bad(self):
-        self.app.app_func('miku', 'add_cart_bad')
+        log(self.app.app_func('miku', 'add_cart_bad'))
     
     def test_good(self):
-        self.app.app_func('miku', 'add_cart')
+        log(self.app.app_func('miku', 'add_cart'))

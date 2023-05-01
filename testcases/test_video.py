@@ -1,5 +1,6 @@
 import unittest
 from app.app import App
+from common.log import log
 
 class TestVideo(unittest.TestCase):
     def setUp(self):
@@ -11,13 +12,13 @@ class TestVideo(unittest.TestCase):
     def test_all(self):
         all_tasks = self.app.app_func.get_task_list()
         for task in all_tasks:
-            self.app.app_func('china', task)
+            log(self.app.app_func('china', task))
     
     def test_search(self):
-        self.app.app_func.search('china')
+        log(self.app.app_func.search('china'))
     
     def test_thumb_up(self):
-        self.app.app_func('chinese', 'thumb_up')
+        log(self.app.app_func('chinese', 'thumb_up'))
     
     def test_get_desc(self):
-        self.app.app_func('russia', 'get_desc')
+        log(self.app.app_func('russia', 'get_desc'))

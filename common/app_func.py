@@ -20,9 +20,10 @@ class AppFunc:
     
     def __call__(self, search_keyword, task_name):
         self.search(search_keyword)
-        self.do_task(task_name)
+        res = self.do_task(task_name)
         self.exit(self.driver)
         self.in_search_panel = False
+        return res
 
     def search(self, keyword):
         if self.in_search_panel:
@@ -41,5 +42,7 @@ class AppFunc:
             raise Exception("Not in search panel but calling do_task()")
         if task_name not in self.tasks:
             raise Exception(f"Task {task_name} not found")
+        res = []
         for op in self.tasks[task_name]:
-            op(self.driver)
+            res.append(op(self.driver))
+        return res
