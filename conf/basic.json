@@ -1,0 +1,11 @@
+{
+    "platformName" : "Android",
+    "platformVersion" : "9",
+    "deviceName" : "emulator-5554 device",
+    "appPackage" : "tv.danmaku.bili",
+    "appActivity" : "tv.danmaku.bili.MainActivityV2",
+    "unicodeKeyboard" : true,
+    "resetKeyboard" : true,
+    "noReset" : true,
+    "newCommandTimeout" : 100000
+}
