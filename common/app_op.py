@@ -38,32 +38,30 @@ class AppOp :
         return 0
 
     def skip(self, driver):
-        time.sleep(1)
+        time.sleep(self.wait_time)
         return 0
     
     def back(self, driver):
         driver.press_keycode(AndroidKey.BACK)
-        time.sleep(2)
+        time.sleep(self.wait_time)
         return 0
     
     def enter(self, driver):
         driver.press_keycode(AndroidKey.ENTER)
-        time.sleep(2)
+        time.sleep(self.wait_time)
         return 0
 
     def click(self, driver):
         self.get_element(driver, click=True)
-        time.sleep(2)
         return 0
     
     def send_keys(self, driver, keyword):
         self.get_element(driver).send_keys(keyword)
-        time.sleep(2)
+        time.sleep(self.wait_time)
         return 0
     
     def find(self, driver):
         res = self.get_element(driver)
-        time.sleep(2)
         return res
 
     def get_texts(self, driver):
@@ -74,6 +72,7 @@ class AppOp :
         for ele in eles:
             if u'购物车' in ele.text:
                 ele.click()
+                time.sleep(self.wait_time)
                 return 0
         raise Exception('AppOp find_cart_and_click failed')
 
