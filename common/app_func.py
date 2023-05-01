@@ -13,8 +13,10 @@ class AppFunc:
         tasks = get_json_value(app_file_func_json_data, "tasks")
         self.tasks = {}
         self.in_search_panel = False
-        for task_key in tasks:
-            self.tasks[task_key] = AppOp(get_json_value(tasks, task_key))
+        for task_name in tasks:
+            self.tasks[task_name] = []
+            for key in tasks[task_name]:
+                self.tasks[task_name].append(AppOp(tasks[task_name][key]))
     
     def __call__(self, search_keyword, task_name):
         self.search(search_keyword)
