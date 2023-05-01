@@ -21,6 +21,7 @@ class Driver:
                 iknow = self.driver.find_element(By.ID, ('button'))
                 print('Adolescent protect found!')
                 iknow.click()
+            time.sleep(5)
         except:
             print('Adolescent protect not found!')
 
@@ -28,5 +29,6 @@ class Driver:
         try:
             self.driver.find_element(By.ID, ('agree')).click()
             print('Privacy protect found!')
+            time.sleep(5)
         except:
             print('Privacy protect not found!')
