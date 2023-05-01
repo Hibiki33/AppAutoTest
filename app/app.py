@@ -10,13 +10,14 @@ class App(object):
         # app_name='tv.danmaku.bili', 
         # apk_path='./App/iBiliPlayer-bili.apk'):
         app_file_json_data = get_desired_caps(app_json_file)
+        app_file_func_json_data = get_desired_caps(app_func_json_file)
         self.device_name = get_json_value(app_file_json_data, 'deviceName')
         self.app_name = get_json_value(app_file_json_data, 'appPackage')
         self.apk_path = get_json_value(app_file_json_data, 'installApkPath')
         self.adb_connect()
         if not app_func_json_file:
-            self.driver = Driver(app_json_file).driver
-            self.app_func = AppFunc(self.driver, app_func_json_file)
+            self.driver = Driver(app_file_json_data).driver
+            self.app_func = AppFunc(self.driver, app_file_func_json_data)
 
     def adb_connect(self): 
         devices = os.popen("adb devices")
