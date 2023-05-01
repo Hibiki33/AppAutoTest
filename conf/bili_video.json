@@ -18,6 +18,10 @@
         "op" : "enter",
         "wait_time" : 3
     },
+    "exit" : {
+        "op" : "back",
+        "wait_time" : 1
+    },
     "tasks" : {
         "get_title" : [
             {

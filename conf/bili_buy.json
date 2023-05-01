@@ -18,6 +18,10 @@
         "op": "send_keys",
         "wait_time": 5
     },
+    "exit" : {
+        "op" : "back",
+        "wait_time" : 1
+    },
     "search_button": {
         "val": "mall_id_search_page_actionbar_commit",
         "type": "id",
