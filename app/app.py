@@ -1,15 +1,17 @@
-from appium import webdriver
 import os
+import sys
+sys.path.append('..')
+from common.read_json import get_json_value
 
 class App(object):
 
-    def __init__(self, 
-            device_name='emulator-5554 device', 
-            app_name='tv.danmaku.bili', 
-            apk_path='./App/iBiliPlayer-bili.apk'):
-        self.device_name = device_name
-        self.app_name = app_name
-        self.apk_path = apk_path
+    def __init__(self, app_file_json_data):
+        # device_name='emulator-5554 device', 
+        # app_name='tv.danmaku.bili', 
+        # apk_path='./App/iBiliPlayer-bili.apk'):
+        self.device_name = get_json_value(app_file_json_data, 'deviceName')
+        self.app_name = get_json_value(app_file_json_data, 'appPackage')
+        self.apk_path = get_json_value(app_file_json_data, 'installApkPath')
         self.adb_connect()
 
     def adb_connect(self): 

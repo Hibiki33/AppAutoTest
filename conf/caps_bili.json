@@ -7,5 +7,6 @@
     "unicodeKeyboard" : true,
     "resetKeyboard" : true,
     "noReset" : true,
-    "newCommandTimeout" : 100000
+    "newCommandTimeout" : 100000,
+    "installApkPath" : "./App/iBiliPlayer-bili.apk"
 }
