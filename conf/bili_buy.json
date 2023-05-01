@@ -29,15 +29,32 @@
         "wait_time": 10
     },
     "tasks": {
-        "first_access" : [
+        "add_cart": [
             {
                 "val": "android.webkit.WebView",
                 "type": "class_name",
                 "op": "find",
                 "wait_time": 10
+            },
+            {
+                "val": "android.widget.Image",
+                "type": "class_name",
+                "op": "click",
+                "index" : 4,
+                "wait_time": 8
+            },
+            {
+                "val": "android.view.View",
+                "type": "class_name",
+                "op": "find_cart_and_click",
+                "wait_time": 5
+            },
+            {
+                "op": "back",
+                "wait_time": 1
             }
         ],
-        "add_cart": [
+        "add_cart_bad": [
             {
                 "val": "android.widget.Image",
                 "type": "class_name",

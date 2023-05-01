@@ -1,5 +1,6 @@
 from app.app import App
-from testcases import test_search, test_buy
+from testcases import test_buy, test_video
+import unittest
 
 if __name__ == '__init__':
     bilibili = App('caps_bili.json')
@@ -8,4 +9,4 @@ if __name__ == '__init__':
 
 
 
-    bilibili.app_uninstall()
+    bilibili.app_replace_install()

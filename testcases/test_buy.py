@@ -4,12 +4,17 @@ from app.app import App
 class TestBuy(unittest.TestCase):
     def setUp(self):
         self.app = App('caps_bili.json', 'bili_buy.json')
+    
+    def tearDown(self):
+        self.app.driver.quit()
 
-    def test_buy1(self):
-        print("buy1")
-
-    def test_buy2(self):
-        print("buy2")
-
-    def test_buy3(self):
-        print("buy3"
+    def test_all(self):
+        all_tasks = self.app.app_func.get_task_list()
+        for task in all_tasks:
+            self.app.app_func('miku', task)
+    
+    def test_bad(self):
+        self.app.app_func('miku', 'add_cart_bad')
+    
+    def test_good(self):
+        self.app.app_func('miku', 'add_cart')
