@@ -1,6 +1,7 @@
 {
     "access_button" : {
-        "op" : "none"
+        "op" : "none",
+        "wait_time" : 1
     },
     "search_frame_id" : {
         "val" : "expand_search",

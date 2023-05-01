@@ -17,7 +17,7 @@ class AppOp :
         if 'type' in op_dict:
             if self.type not in by_dict:
                 raise Exception('AppOp init failed type not in id, xpath, class_name')
-        self.by = by_dict[self.type]
+            self.by = by_dict[self.type]
 
     def __call__(self, driver, keyword=None):
         func_dict = {'try_click': self.click, 'skip': self.skip, 'back': self.back, 'enter': self.enter, 'click': self.click, 'send_keys': self.send_keys, 'find': self.find, 'find_cart_and_click': self.find_cart_and_click}
