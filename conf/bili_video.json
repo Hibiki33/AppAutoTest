@@ -61,13 +61,13 @@
                 "val" : "tab_sub_title",
                 "type" : "id",
                 "op" : "click",
-                "wait_time" : 1
+                "wait_time" : 10
             },
             {
                 "val" : "android.widget.TextView",
                 "type" : "class_name",
                 "op" : "get_texts",
-                "wait_time" : 3
+                "wait_time" : 5
             },
             {
                 "op" : "back",
