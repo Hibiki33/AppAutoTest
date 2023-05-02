@@ -14,11 +14,13 @@ class TestBuy(unittest.TestCase):
     #     for task in all_tasks:
     #         log(self.app.app_func('miku', task), 'log/buy_log.txt')
 
-    # def test_without_visiting_webview(self):
-    #     log(self.app.app_func('miku', 'vist_webview_bad'))
-
-    # def test_bad(self):
-    #     log(self.app.app_func('miku', 'add_cart_bad'))
-    
     def test_good(self):
-        log(self.app.app_func('miku', 'add_cart'), 'log/buy_log.txt')
+        log(self.app.app_func(u'尼禄', 'add_cart'))
+
+    def test_without_visiting_webview(self):
+        log(self.app.app_func('miku', 'vist_webview_bad'))
+
+    def test_bad(self):
+        log(self.app.app_func('miku', 'add_cart_bad'))
+    
+    

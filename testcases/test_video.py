@@ -24,4 +24,4 @@ class TestVideo(unittest.TestCase):
         log(self.app.app_func('chinese', 'thumb_up'))
     
     def test_get_desc(self):
-        log(self.app.app_func('russia', 'get_desc'), 'log/video_decs_log.txt')
+        log(self.app.app_func('American', 'get_desc'), 'log/video_decs_log.txt')

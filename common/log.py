@@ -3,6 +3,6 @@ def log(s, target=None):
     s = str(s)
     if target:
         with open(target, 'w', encoding = 'utf-8') as fp:
-            fp.write()
+            fp.write(s)
     else:
         print(s)

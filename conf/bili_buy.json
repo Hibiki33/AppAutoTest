@@ -40,14 +40,14 @@
                 "val": "android.widget.Image",
                 "type": "class_name",
                 "op": "click",
-                "index" : 6,
+                "index" : 4,
                 "wait_time": 8
             },
             {
                 "val": "android.view.View",
                 "type": "class_name",
                 "op": "find_cart_and_click",
-                "wait_time": 5
+                "wait_time": 10
             },
             {
                 "op": "back",
