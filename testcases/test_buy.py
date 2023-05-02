@@ -13,7 +13,10 @@ class TestBuy(unittest.TestCase):
         all_tasks = self.app.app_func.get_task_list()
         for task in all_tasks:
             log(self.app.app_func('miku', task))
-    
+
+    def test_without_visiting_webview(self):
+        log(self.app.app_func('miku', 'vist_webview_bad'))
+
     def test_bad(self):
         log(self.app.app_func('miku', 'add_cart_bad'))
     

@@ -78,6 +78,25 @@
                 "op": "back",
                 "wait_time": 1
             }
+        ],
+        "vist_webview_bad": [
+            {
+                "val": "android.view.Image",
+                "type": "class_name",
+                "op": "click",
+                "index" : 6,
+                "wait_time": 8
+            },
+            {
+                "val": "android.view.View",
+                "type": "class_name",
+                "op": "find_cart_and_click",
+                "wait_time": 5
+            },
+            {
+                "op": "back",
+                "wait_time": 1
+            }
         ]
     }
 }
