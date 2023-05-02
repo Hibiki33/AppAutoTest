@@ -2,6 +2,7 @@ def log(s, target=None):
     print()
     s = str(s)
     if target:
-        target.write(s)
+        with open(target, 'w', encoding = 'utf-8') as fp:
+            fp.write()
     else:
         print(s)

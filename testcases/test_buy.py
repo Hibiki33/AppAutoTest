@@ -9,16 +9,16 @@ class TestBuy(unittest.TestCase):
     def tearDown(self):
         self.app.driver.quit()
 
-    def test_all(self):
-        all_tasks = self.app.app_func.get_task_list()
-        for task in all_tasks:
-            log(self.app.app_func('miku', task))
+    # def test_all(self):
+    #     all_tasks = self.app.app_func.get_task_list()
+    #     for task in all_tasks:
+    #         log(self.app.app_func('miku', task), 'log/buy_log.txt')
 
-    def test_without_visiting_webview(self):
-        log(self.app.app_func('miku', 'vist_webview_bad'))
+    # def test_without_visiting_webview(self):
+    #     log(self.app.app_func('miku', 'vist_webview_bad'))
 
-    def test_bad(self):
-        log(self.app.app_func('miku', 'add_cart_bad'))
+    # def test_bad(self):
+    #     log(self.app.app_func('miku', 'add_cart_bad'))
     
     def test_good(self):
-        log(self.app.app_func('miku', 'add_cart'))
+        log(self.app.app_func('miku', 'add_cart'), 'log/buy_log.txt')

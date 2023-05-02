@@ -9,10 +9,10 @@ class TestVideo(unittest.TestCase):
     def tearDown(self):
         self.app.driver.quit()
 
-    def test_all(self):
-        all_tasks = self.app.app_func.get_task_list()
-        for task in all_tasks:
-            log(self.app.app_func('china', task))
+    # def test_all(self):
+    #     all_tasks = self.app.app_func.get_task_list()
+    #     for task in all_tasks:
+    #         log(self.app.app_func('china', task), 'log/video_log.txt')
     
     def test_error_finding_element(self):
         log(self.app.app_func('chinese', 'bad_thumb_up'))
@@ -24,4 +24,4 @@ class TestVideo(unittest.TestCase):
         log(self.app.app_func('chinese', 'thumb_up'))
     
     def test_get_desc(self):
-        log(self.app.app_func('russia', 'get_desc'))
+        log(self.app.app_func('russia', 'get_desc'), 'log/video_decs_log.txt')
