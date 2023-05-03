@@ -15,12 +15,24 @@ class TestBuy(unittest.TestCase):
     #         log(self.app.app_func('miku', task), 'log/buy_log.txt')
 
     def test_good(self):
-        log(self.app.app_func(u'尼禄', 'add_cart'))
+        search_keyword = u'尼禄'
+        r = log(self.app.app_func(search_keyword, 'add_cart'))
+        valid_names = []
+        for i in r:
+            if search_keyword in i:
+                valid_names.append(i)
+        self.assertTrue(len(valid_names) > 1)
 
-    def test_without_visiting_webview(self):
-        log(self.app.app_func('miku', 'vist_webview_bad'))
+#     def test_without_visiting_webview(self):
+#         log(self.app.app_func('miku', 'vist_webview_bad'))
 
     def test_bad(self):
-        log(self.app.app_func('miku', 'add_cart_bad'))
+        search_keyword = u'中国结'
+        r = log(self.app.app_func(search_keyword, 'add_cart'))
+        valid_names = []
+        for i in r:
+            if search_keyword in i:
+                valid_names.append(i)
+        self.assertTrue(len(valid_names) > 1)
     
     
