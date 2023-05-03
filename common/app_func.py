@@ -46,4 +46,7 @@ class AppFunc:
         res = []
         for op in self.tasks[task_name]:
             res.append(op(self.driver))
+            if isinstance(res[-1], int):
+                if res[-1] < 0:
+                    break
         return res
