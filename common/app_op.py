@@ -64,9 +64,12 @@ class AppOp :
         return 0
     
     def find(self, driver):
-        res = self.get_element(driver)
-        time.sleep(self.wait_time)
-        return res
+        try:
+            self.get_element(driver)
+            time.sleep(self.wait_time)
+            return 0
+        except:
+            return -1
 
     def get_texts(self, driver):
         res = []
