@@ -66,7 +66,11 @@ class AppOp :
         return res
 
     def get_texts(self, driver):
-        res = [ele.text for ele in self.get_elements(driver)]
+        res = []
+        try:
+            res += [ele.text for ele in self.get_elements(driver)]
+        except:
+            pass
         time.sleep(self.wait_time)
         return res
     
