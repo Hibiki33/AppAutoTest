@@ -15,7 +15,7 @@ class TestBuy(unittest.TestCase):
     #         log(self.app.app_func('miku', task), 'log/buy_log.txt')
 
     def test_good(self):
-        search_keyword = u'尼禄'
+        search_keyword = u'ANIPLEX'
         r = log(self.app.app_func(search_keyword, 'add_cart'))
         self.assertTrue(isinstance(r, list))
         valid_names = []
