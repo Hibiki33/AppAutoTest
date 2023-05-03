@@ -37,6 +37,12 @@
                 "wait_time": 10
             },
             {
+                "val" : "android.widget.TextView",
+                "type" : "class_name",
+                "op" : "get_texts",
+                "wait_time" : 10
+            },
+            {
                 "val": "android.widget.Image",
                 "type": "class_name",
                 "op": "click",
