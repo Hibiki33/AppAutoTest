@@ -6,6 +6,8 @@ def log(s, target=None):
             if i != 0:
                 res = i
                 break
+    except:
+        res = 0
     s = str(s)
     if target:
         with open(target, 'w', encoding = 'utf-8') as fp:
