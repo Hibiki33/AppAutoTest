@@ -17,6 +17,7 @@ class TestBuy(unittest.TestCase):
     def test_good(self):
         search_keyword = u'尼禄'
         r = log(self.app.app_func(search_keyword, 'add_cart'))
+        self.assertTrue(isinstance(r, list))
         valid_names = []
         for i in r:
             if search_keyword in i:
@@ -29,6 +30,7 @@ class TestBuy(unittest.TestCase):
     def test_bad(self):
         search_keyword = u'中国结'
         r = log(self.app.app_func(search_keyword, 'add_cart'))
+        self.assertTrue(isinstance(r, list))
         valid_names = []
         for i in r:
             if search_keyword in i:
