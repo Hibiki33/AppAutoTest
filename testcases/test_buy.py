@@ -15,7 +15,7 @@ class TestBuy(unittest.TestCase):
     #         log(self.app.app_func('miku', task), 'log/buy_log.txt')
 
     def test_good(self):
-        search_keyword = u'ANIPLEX'
+        search_keyword = 'ANIPLEX'
         r = log(self.app.app_func(search_keyword, 'add_cart'))
         self.assertTrue(isinstance(r, list))
         valid_names = []
@@ -23,12 +23,13 @@ class TestBuy(unittest.TestCase):
             if search_keyword in i:
                 valid_names.append(i)
         self.assertTrue(len(valid_names) > 1)
+        print("Normal test is passed")
 
 #     def test_without_visiting_webview(self):
 #         log(self.app.app_func('miku', 'vist_webview_bad'))
 
-    def test_bad(self):
-        search_keyword = u'中国结'
+    def test_input_Chinese(self):
+        search_keyword = u'尼禄'
         r = log(self.app.app_func(search_keyword, 'add_cart'))
         self.assertTrue(isinstance(r, list))
         valid_names = []
@@ -36,5 +37,6 @@ class TestBuy(unittest.TestCase):
             if search_keyword in i:
                 valid_names.append(i)
         self.assertTrue(len(valid_names) > 1)
+        print("Chinese search test is passed")
     
     

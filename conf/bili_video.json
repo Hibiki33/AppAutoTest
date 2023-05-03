@@ -68,6 +68,78 @@
                 "wait_time" : 1
             }
         ],
+        "bad_thumb_up_10" : [
+            {
+                "val" : "title",
+                "type" : "id",
+                "op" : "click",
+                "wait_time" : 5
+            },
+            {
+                "val" : "frame_recommend",
+                "type" : "xpath",
+                "op" : "click",
+                "wait_time" : 2
+            },
+            {
+                "val" : "frame_recommend",
+                "type" : "xpath",
+                "op" : "click",
+                "wait_time" : 2
+            },
+            {
+                "val" : "frame_recommend",
+                "type" : "xpath",
+                "op" : "click",
+                "wait_time" : 2
+            },
+            {
+                "val" : "frame_recommend",
+                "type" : "xpath",
+                "op" : "click",
+                "wait_time" : 2
+            },
+            {
+                "val" : "frame_recommend",
+                "type" : "xpath",
+                "op" : "click",
+                "wait_time" : 2
+            },
+            {
+                "val" : "frame_recommend",
+                "type" : "xpath",
+                "op" : "click",
+                "wait_time" : 2
+            },
+            {
+                "val" : "frame_recommend",
+                "type" : "xpath",
+                "op" : "click",
+                "wait_time" : 2
+            },
+            {
+                "val" : "frame_recommend",
+                "type" : "xpath",
+                "op" : "click",
+                "wait_time" : 2
+            },
+            {
+                "val" : "frame_recommend",
+                "type" : "xpath",
+                "op" : "click",
+                "wait_time" : 2
+            },
+            {
+                "val" : "frame_recommend",
+                "type" : "xpath",
+                "op" : "click",
+                "wait_time" : 2
+            },
+            {
+                "op" : "bad",
+                "wait_time" : 1
+            }
+        ],
         "get_desc" : [
             {
                 "val" : "title",
