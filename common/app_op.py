@@ -52,11 +52,14 @@ class AppOp :
         return 0
 
     def click(self, driver):
-        self.get_element(driver, click=True)
-        return 0
+        r = self.get_element(driver, click=True)
+        return r
     
     def send_keys(self, driver, keyword):
-        self.get_element(driver).send_keys(keyword)
+        try:
+            self.get_element(driver).send_keys(keyword)
+        except:
+            return -1
         time.sleep(self.wait_time)
         return 0
     
@@ -76,24 +79,29 @@ class AppOp :
     
     def find_cart_and_click(self, driver):
         eles = self.get_elements(driver)
-        for ele in eles:
-            if u'购物车' in ele.text:
-                ele.click()
-                time.sleep(self.wait_time)
-                return 0
-        raise Exception('AppOp find_cart_and_click failed')
+        try:
+            for ele in eles:
+                if u'购物车' in ele.text:
+                    ele.click()
+                    time.sleep(self.wait_time)
+                    return 0
+        except:
+            return -1
 
     def get_element(self, driver, click=False):
-        if click:
+        try:
+            if click:
+                if 'index' in self.op_dict:
+                    self.wait(driver, lambda d: d.find_elements(self.by, (self.val)), 3)[self.index].click()
+                else:
+                    self.wait(driver, lambda d: d.find_element(self.by, (self.val)), 3).click()
+                time.sleep(self.wait_time)
+                return 0
             if 'index' in self.op_dict:
-                self.wait(driver, lambda d: d.find_elements(self.by, (self.val)), 3)[self.index].click()
-            else:
-                self.wait(driver, lambda d: d.find_element(self.by, (self.val)), 3).click()
-            time.sleep(self.wait_time)
-            return 0
-        if 'index' in self.op_dict:
-            return self.wait(driver, lambda d: d.find_elements(self.by, (self.val)), self.wait_time)[self.index]
-        return self.wait(driver, lambda d: d.find_element(self.by, (self.val)), self.wait_time)
+                return self.wait(driver, lambda d: d.find_elements(self.by, (self.val)), self.wait_time)[self.index]
+            return self.wait(driver, lambda d: d.find_element(self.by, (self.val)), self.wait_time)
+        except:
+            return -1
     
     def get_elements(self, driver):
         return self.wait(driver, lambda d: d.find_elements(self.by, (self.val)), self.wait_time)
