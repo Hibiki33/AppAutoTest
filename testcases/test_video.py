@@ -18,10 +18,30 @@ class TestVideo(unittest.TestCase):
 #         log(self.app.app_func('chinese', 'bad_thumb_up'))
     
     def test_search(self):
-        r = log(self.app.app_func.search('china'))
+        search_keyword = 'china'
+        r = log(self.app.app_func(search_keyword, 'get_title'))
+        self.assertTrue(isinstance(r, list))
+        self.assertTrue(len(r) > 0)
+    
+    def test_search_bad(self):
+        search_keyword = 'nnrrnanrrna'
+        r = log(self.app.app_func(search_keyword, 'get_title'))
+        self.assertTrue(isinstance(r, list))
+        self.assertTrue(len(r) > 0)
     
     def test_thumb_up(self):
-        log(self.app.app_func('chinese', 'thumb_up'))
+        r = log(self.app.app_func('chinese', 'thumb_up'))
+        self.assertTrue(r == 0)
     
     def test_get_desc(self):
-        log(self.app.app_func('China Daily', 'get_desc'), 'log/video_decs_log.txt')
+        search_keyword = 'China Daily'
+        r = log(self.app.app_func(search_keyword, 'get_desc'), 'log/video_decs_log.txt')
+        self.assertTrue(isinstance(r, list))
+        self.assertTrue(len(r) > 5)
+    
+    def test_get_desc_bad(self):
+        search_keyword = u'新中国成立视频'
+        r = log(self.app.app_func(search_keyword, 'get_desc'), 'log/video_decs_log.txt')
+        self.assertTrue(isinstance(r, list))
+        self.assertTrue(len(r) > 5)
+    
