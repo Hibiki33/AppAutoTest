@@ -6,6 +6,8 @@ def log(s, target=None):
             if not isinstance(i, int):
                 res = i
                 break
+            elif i < 0:
+                res = i
     except:
         res = 0
     s = str(s)
