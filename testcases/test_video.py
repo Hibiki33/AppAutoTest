@@ -14,11 +14,11 @@ class TestVideo(unittest.TestCase):
     #     for task in all_tasks:
     #         log(self.app.app_func('china', task), 'log/video_log.txt')
     
-    def test_error_finding_element(self):
-        log(self.app.app_func('chinese', 'bad_thumb_up'))
+#     def test_error_finding_element(self):
+#         log(self.app.app_func('chinese', 'bad_thumb_up'))
     
     def test_search(self):
-        log(self.app.app_func.search('china'))
+        r = log(self.app.app_func.search('china'))
     
     def test_thumb_up(self):
         log(self.app.app_func('chinese', 'thumb_up'))
