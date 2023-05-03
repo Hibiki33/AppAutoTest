@@ -3,7 +3,7 @@ def log(s, target=None):
     try:
         res = s[0]
         for i in s:
-            if i != 0:
+            if not isinstance(i, int):
                 res = i
                 break
     except:
